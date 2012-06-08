@@ -15,10 +15,10 @@ DB = {};
 var Database = {
     connect: function( host, port, database, callback ) {
         Database.connection = mongoose.connect( 'mongodb://' + host + ':' + port + '/' + database, {} );
-        var files = fs.readdirSync('./models/');
+        var files = fs.readdirSync('./Models/');
         for ( var f=0; f < files.length; ++f ) {
             var name = files[f].match(/(.+?)\.model/i)[1];
-            var model = require('./models/' + files[f]);
+            var model = require('./Models/' + files[f]);
             DB[name] = mongoose.model(model.collection, model.schema);
         }
     }
