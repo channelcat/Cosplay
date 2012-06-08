@@ -1,0 +1,56 @@
+!!! 5
+html(lang="en")
+  head
+    title #{title}
+    script(type='text/javascript',src='/js/jquery-1.6.2.min.js')
+    script(type='text/javascript',src='/js/jquery-ui-1.8.16.custom.min.js')
+    script(type='text/javascript',src='/js/validation.js')
+    script(type='text/javascript',src='/js/global.js')
+    script(type='text/javascript')!=js_inline
+    link(rel='stylesheet',type='text/css',href='/css/reset.css')
+    link(rel='stylesheet',type='text/css',href='/css/layout.css')
+    link(rel='stylesheet',type='text/css',href='/css/jquery/jquery-ui-1.8.16.custom.css')
+  body
+    h1
+      a(href='/',alt='Lost Cos')
+        img(src='/images/logo.png')
+    #sidebar
+      .top
+        img(src='/images/sidebar-corner.png')
+      .content
+        -if (!currentUser.loggedIn)
+          .container
+            h2 Login
+            .content
+              form(method='post')
+                input(name='email',placeholder='Email Address')
+                input(name='password',placeholder='Password',type='password')
+                input(type='submit',name='login',value='Login')
+        -else
+          .container
+            h2 Welcome!
+            .content 
+              p Welcome noob #{currentUser.displayName}!
+              a(href='/user/logout/') Logout
+    ul#navigation
+      -if (!currentUser.loggedIn)
+        li 
+          a(href='/user/register/') Register
+      -else
+        li!= currentUser.link
+        li 
+          a(href='/user/edit/') Settings
+      li
+        a(href='/photo/gallery/') Gallery
+      li
+        a(href='/tutorial/') Tutorials
+      li
+        a(href='/forum/') Forum
+    #wrapper
+      -if (errors.length != 0)
+        .container
+          h2 Error!
+          .content
+            for error in errors
+              div!= error
+      div!= body

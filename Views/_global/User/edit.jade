@@ -1,0 +1,31 @@
+
+.container
+  h2 Profile
+  .content
+    form(id='user_edit',method='post',action='/user/save/',validation='User.profile',enctype='multipart/form-data')
+      ul
+        li
+          label(for='email') Email
+          input(name='email',id='email',placeholder='Email',value=currentUser.email)
+        li
+          label(for='name') Name
+          input(name='name',id='name',placeholder='Name',value=currentUser.name)
+        li
+          label(for='password') Password
+          input(name='password',id='password',placeholder='Password',type='password')
+        li
+          label(for='birthday') Birthday
+          !=form.date('birthday', currentUser.birthday)
+        li
+          label(for='gender') Gender
+          !=form.select('gender',[{name:'- none selected -',value:''},{name:'Male',value:'M'},{name:'Female',value:'F'}],currentUser.gender)
+        li
+          label(for='gender') Profile Type
+          !=form.select('profile_type',[{name:'Cosplayer',value:'1'},{name:'Photographer',value:'2'}],currentUser.profile_type)
+        li
+          label(for='gender') Biography
+          textarea(name='biography')=currentUser.biography
+              
+      //input(type='file',name='myfile')
+      //input(name='dax')
+      input(type='submit')

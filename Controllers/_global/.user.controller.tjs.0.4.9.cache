@@ -1,0 +1,104 @@
+var tame = require('tamejs').runtime;
+var __tame_defer_cb = null;
+var __tame_fn_0 = function (__tame_k) {
+    tame.setActiveCb (__tame_defer_cb);
+    var crypto = require ( 'crypto' ) ;
+    
+    var UserController =
+    {
+    name : '_global/User' ,
+    
+    index :
+    function  (params) {
+        this . title += 'User Control Panel' ;
+        return this . output ( 'index' , { } );
+    }
+    ,
+    
+    
+    register :
+    function  (params) {
+        this . title += 'Register' ;
+        console . log ( params ) ;
+        if (params . register != undefined) {
+            if (! params . username || params . username . length == 0) {
+                this . errors . push ( 'Please enter a user name.' ) ;
+            } else {
+                if (! params . displayName || params . displayName . length == 0) {
+                    this . errors . push ( 'Please enter a display name.' ) ;
+                } else {
+                    if (! params . password || params . password . length == 0) {
+                        this . errors . push ( 'Please enter a password.' ) ;
+                    } else {
+                        if (params . username . length > 50 == null) {
+                            this . errors . push ( 'User name is too long. (limit 50 characters)' ) ;
+                        } else {
+                            if (params . gender != 'M' && params . gender != 'F') {
+                                this . errors . push ( 'Invalid gender selected.' ) ;
+                            } else {
+                                chain . call ( this ,
+                                function  () {
+                                    DB . User . findOne ( { } , [ ] , { sort : { id : -1 } , limit : 1 } , this . next ) ;
+                                }
+                                ,
+                                function  (error, lastUser) {
+                                    this . user = new DB . User ( {
+                                    id : lastUser . id +1 ,
+                                    name : params . username ,
+                                    displayName : params . displayName ,
+                                    password : this . _getHash ( params . password ) ,
+                                    gender : params . gender
+                                    } ) ;
+                                    this . user . save ( ) ;
+                                    this . _createSession ( this . user . id ) ;
+                                    return this . output ( 'registered' , { } );
+                                }
+                                ) ;
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+        }
+        return this . output ( 'register' , { months : require_base ( 'Date' ) . months , params : params } );
+    }
+    ,
+    
+    
+    logout :
+    function  (params) {
+        this . title += 'Log Out' ;
+        this . user = { id : 0 , name : 'guest' , displayName : 'Guest' , loggedIn : false } ;
+        var date = new Date ( ) ;
+        date . setYear ( 1900 ) ;
+        this . cookies . set ( 'session' , '' , { expires : date } ) ;
+        return this . output ( 'logout' , { } );
+    }
+    ,
+    
+    
+    profile :
+    function  (params) {
+        this . title += 'User Profile' ;
+        if (! params . id) {
+            throw new Error ( 'Cannot find member' ) ;
+        } else {
+        }
+        chain . call ( this ,
+        function  () {
+            DB . User . findOne ( { name : params . id } , this . next ) ;
+        }
+        ,
+        function  (error, user) {
+            return this . output ( 'profile' , { user : user } );
+        }
+        ) ;
+    }
+    } ;
+    
+    module . exports = Class . extend ( Controller , UserController ) ;
+    tame.callChain([__tame_k]);
+    tame.setActiveCb (null);
+};
+__tame_fn_0 (tame.end);

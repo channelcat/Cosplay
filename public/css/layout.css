@@ -1,0 +1,121 @@
+/*
+ * Layout.css
+ * © 2012 Lost Cos
+ */
+
+/* Layout 
+ ***********************************************/
+
+body {
+	font-family: Arial;
+	background: #262834;
+	padding: 115px 0 0 250px;
+}
+
+h1 {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	}
+	h1 a {
+		text-decoration: none;
+		color: #333;
+	}
+	
+h2 {
+	color: #c3e8ec;
+	font-size: 2em;
+	margin: 20px 0 40px 0;
+}
+
+div#wrapper {
+	padding: 10px;
+	margin: 10px 0 0 0;
+}
+
+/* Navigation 
+ ***********************************************/
+ul#navigation {
+
+	padding: 5px;
+	height: 15px;
+	}
+	ul#navigation li {
+		margin: 0 10px 0 0;
+		padding: 5px 8px;
+		float: left;
+		border-bottom: 1px solid transparent;
+		}
+	ul#navigation li:hover, ul#navigation li.selected {
+		background: #1c1d2a;
+		border-bottom: 1px solid #444658;
+		border-radius: 5px;
+		}
+		ul#navigation li a {
+			color: #fff;
+			text-decoration: none;
+		}
+
+/* Sidebar 
+ ***********************************************/
+div#sidebar {
+	background: url('/images/sidebar-right.png') 100% 0 repeat-y #f1f3f2;
+	position: absolute;
+	width: 250px;
+	top: 120px;
+	bottom: 0;
+	left: 0;
+	min-height: 600px;
+	}
+	div#sidebar .top {
+		background: url('/images/sidebar-top.png');
+		height: 14px;
+		text-align: right;
+		}
+	div#sidebar .content {
+		padding: 8px;
+		}
+
+/* Container 
+ ***********************************************/
+div.container {
+	background: #fff;
+	border-radius: 5px;
+	margin: 0 0 15px 0;
+	color: #616161;
+	font-size: 0.9em;
+	}
+	div.container h2 {
+		font-size: 1em;
+		padding: 10px 10px 0 10px;
+		color: #262834;
+		font-weight: bold;
+		margin: 0;
+	}
+	div.container div.content {
+		padding: 10px;
+	}
+
+
+
+/* Registration 
+ ***********************************************/
+form label {
+	display: inline-block;
+	width: 125px;
+	text-align: right;
+	margin-right: 5px;
+	vertical-align: top;
+}
+form input, form select {
+	display: inline-block;
+}
+form textarea {
+	width: 300px;
+	height: 150px;
+}
+form input[type='submit'] {
+	clear: both;
+	display: block;
+}
+
