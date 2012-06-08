@@ -13,10 +13,10 @@ Validations = {};
 var Validation = {
 	init: function()
 	{
-        var files = fs.readdirSync('./validations/');
+        var files = fs.readdirSync('./Validations/');
         for ( var f=0; f < files.length; ++f ) {
             var name = files[f].match(/(.+?)\.validation/i)[1];
-            var validations = require('./validations/' + files[f]);
+            var validations = require('./Validations/' + files[f]);
             validations.each(function(key, value){
             	if (Validations[name] == undefined) Validations[name] = {};
             	Validations[name][key] = new Validator( name, key, value );
