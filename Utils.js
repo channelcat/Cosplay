@@ -22,6 +22,11 @@ String.prototype.toCamel = function(){
     return this.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
 };
 
+/* String.toCamel */
+String.prototype.capitalize = function(){
+    return this.substr(0, 1).toUpperCase() + this.substr(1);
+};
+
 /* String.toUnderscore */
 String.prototype.toUnderscore = function(){
     return this.replace(/([A-Z])/g, function($1){return "_"+$1.toLowerCase();});
