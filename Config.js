@@ -21,5 +21,8 @@ Config = {
 	site: {
 	    title: 'Lost Cos - ',
 	    salt: 'H*AF(*hfz09ag3-j0gd90#%0J'
+	},
+	user: {
+	    avatar_size: 75
 	}
 };

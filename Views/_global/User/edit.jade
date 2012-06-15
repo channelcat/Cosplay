@@ -18,14 +18,15 @@
           !=form.date('birthday', currentUser.birthday)
         li
           label(for='gender') Gender
-          !=form.select('gender',[{name:'- none selected -',value:''},{name:'Male',value:'M'},{name:'Female',value:'F'}],currentUser.gender)
+          !=form.select('gender', [{name:'- none selected -',value:''},{name:'Male',value:'M'},{name:'Female',value:'F'}], currentUser.gender)
         li
-          label(for='gender') Profile Type
-          !=form.select('profile_type',[{name:'Cosplayer',value:'1'},{name:'Photographer',value:'2'}],currentUser.profile_type)
+          label(for='profile_type') Profile Type
+          !=form.select('profile_type', [{name:'Cosplayer',value:'1'},{name:'Photographer',value:'2'}], currentUser.profile_type)
         li
-          label(for='gender') Biography
+          label(for='biography') Biography
           textarea(name='biography')=currentUser.biography
+        li
+          label(for='avatar') Avatar
+          input(type='file',name='avatar')
               
-      //input(type='file',name='myfile')
-      //input(name='dax')
       input(type='submit')

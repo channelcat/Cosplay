@@ -147,10 +147,30 @@ var UserController =
         if (params.profile_type != undefined) { this.user.profile_type = params.profile_type; }
         if (params.biography != undefined) { this.user.biography = params.biography; }
         
-        // Save the changes made
-        this.user.save();
-        
-        return this.output('edit', { saved: 1 });
+        var image;
+        chain.call(this, function() {
+            if (params.files.avatar && params.files.avatar.size) {
+                image = ImageManip(params.files.avatar.path);
+                image.size(this.next);
+            } else {
+                this.last();
+            }
+        }, function(error, size) {
+            if (error) return this.error('Unable to process avatar.  The file is not a valid image. ' + error);
+            
+            if (size.height != Config.user.avatar_size || size.height != Config.user.avatar_size) {
+                image.resize(Config.user.avatar_size, Config.user.avatar_size);
+            }
+            
+            image.write(this.user.avatar_path, this.next);
+        }, function(error) {
+            if (error) return this.error('Unable to save avatar.' + error);
+            
+            // Save the changes made
+            this.user.save();
+             
+            return this.output('edit', { saved: 1 });
+        });
     }
 };
 

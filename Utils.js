@@ -12,34 +12,25 @@ var System = require("util");
  ** Built-in type extensions
  *************************************************/
 
-/* String.trim */
 String.prototype.trim = function(){
     return this.replace(/^\s+|\s+$/g, "");
 };
-
-/* String.toCamel */
 String.prototype.toCamel = function(){
     return this.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
 };
-
-/* String.toCamel */
 String.prototype.capitalize = function(){
     return this.substr(0, 1).toUpperCase() + this.substr(1);
 };
-
-/* String.toUnderscore */
 String.prototype.toUnderscore = function(){
     return this.replace(/([A-Z])/g, function($1){return "_"+$1.toLowerCase();});
 };
 
-/* Array.each */
 Array.prototype.each = function(func){
     for ( var i=0; i < this.length; ++i ) {
     	func.apply(this[i], [i]);
     };
 };
 
-/* Object.extend */
 Object.defineProperty(Object.prototype, "extend", {
     enumerable: false,
     value: function( from ) {
@@ -49,8 +40,6 @@ Object.defineProperty(Object.prototype, "extend", {
         return this;
     }
 });
-
-/* Object.extend */
 Object.defineProperty(Object.prototype, "each", {
     enumerable: false,
     value: function( func ) {
@@ -159,6 +148,11 @@ require_base = function(file)
 };
 
 
+/*************************************************
+ * Image Manipulation
+ *************************************************/
+
+ImageManip = require('gm');
 
 /*************************************************
  ** Utility Functions
