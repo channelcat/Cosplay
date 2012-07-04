@@ -30,4 +30,5 @@ var UserModel = new Schema({
     avatar_path: { type: String, get: function(){ return './public/uploaded/user/avatars/' + this.id + '.png'; } },
     avatar_url: { type: String, get: function(){ return '/uploaded/user/avatars/' + this.id + '.png'; } }
 });
+
 module.exports = { collection: 'users', schema: UserModel };

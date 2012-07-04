@@ -1,0 +1,76 @@
+.button-1 { height: 23px; background: #4d4d4d url(../images/shadow-1.png) bottom left repeat-x; float: left; box-shadow: rgba(0, 0, 0, 0.2) 0 3px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.15); color: #ffdc97; font: 14px Ropa Sans; border-radius: 4px; text-shadow: #343434 0 1px 0; padding: 6px 18px 0 18px; }
+.button-1:hover { background: #5f5f5f url(../images/shadow-1.png) bottom left repeat-x; color: #ffdc97; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.15); }
+.button-1:active { margin: 2px 0 0 0; }
+
+.button-2 { height: 23px; background: #4d4d4d url(../images/shadow-1.png) bottom left repeat-x; float: left; box-shadow: rgba(0, 0, 0, 0.2) 0 3px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.15); color: #ffdc97; font: 14px Ropa Sans; border-radius: 4px; text-shadow: #343434 0 1px 0; padding: 6px 18px 0 18px; }
+.button-2:hover { background: #5f5f5f; color: #ffdc97; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.15); }
+
+.button-3 { height: 17px; background: #4d4d4d url(../images/shadow-1.png) bottom left repeat-x; float: left; box-shadow: rgba(0, 0, 0, 0.2) 0 3px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.15); color: #ffdc97; font: 11px Ropa Sans; border-radius: 4px; text-shadow: #343434 0 1px 0; padding: 4px 15px 0 15px; }
+.button-3:hover { background: #5f5f5f; color: #ffdc97; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.15); }
+
+.button-4 { height: 45px; background: #4d4d4d url(../images/shadow-1.png) bottom left repeat-x; float: left; box-shadow: rgba(0, 0, 0, 0.2) 0 3px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.15); color: #ffdc97; font: 28px Ropa Sans; border-radius: 4px; text-shadow: #343434 0 1px 0; padding: 13px 28px 0 28px; }
+.button-4:hover { background: #5f5f5f; color: #ffdc97; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.15); }
+
+
+.image-caption { margin-bottom: 23px !important; font-size: 11px; }
+	.image-caption td { padding: 14px 0 0 0; }
+		.image-caption td div {  }
+	.image-caption img { display: block; margin: 0 0 12px 0; }
+	.image-caption p { margin: 0 !important; text-align: center; font-weight: bold; text-shadow: #000 0 1px 0; color: #7f7f7f; }
+
+
+.blockquote-quote-marks { margin: 17px auto 25px auto; width: 478px; padding: 25px 0 0 0; }
+	.blockquote-quote-marks blockquote { margin: -15px 0 0 0; padding: 0 40px 0 55px; background: url(../images/blockquote-quote-mark-bg.png) 0 4px no-repeat; text-align: left; font-size: 17px; font-weight: bold; line-height: 26px; color: #ffd497; }
+
+.blockquote-pin { margin: 17px auto 25px auto; width: 478px; padding: 25px 0 0 0; }
+	.blockquote-pin blockquote { margin: -15px 0 0 0; padding: 0 40px 0 55px; background: url(../images/blockquote-pin-bg.png) 0 4px no-repeat; text-align: left; font-size: 17px; font-weight: bold; line-height: 26px; color: #ffd497; }
+
+.blockquote-star { margin: 17px auto 25px auto; width: 478px; padding: 25px 0 0 0; }
+	.blockquote-star blockquote { margin: -15px 0 0 0; padding: 0 40px 0 55px; background: url(../images/blockquote-star-bg.png) 0 4px no-repeat; text-align: left; font-size: 17px; font-weight: bold; line-height: 26px; color: #fff; }
+
+
+	.list-pin li { padding: 0 0 0 20px; background: url(../images/ico-pin-1.png) 0 3px no-repeat; }
+	.list-star li { color: #fff; padding: 0 0 0 22px; background: url(../images/ico-star-1.png) 0 3px no-repeat; }
+
+
+.btn-align-left { margin: 0 20px 20px 0; float: left; }
+.btn-align-right { margin: 0 0 20px 20px; float: right; }
+
+
+.post-spacer-1 { width: 100%; height: 1px; line-height: 1px; margin: 40px 0; border-bottom: 1px dotted rgba(255, 255, 255, 0.3); }
+.post-spacer-2 { width: 100%; height: 1px; line-height: 1px; margin: 40px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+.post-spacer-3 { width: 100%; height: 13px; line-height: 1px; margin: 40px 0; background: url(../images/border-5.png) center center no-repeat; }
+
+
+.half-column-left { width: 290px; margin: 0 25px 25px 0; float: left; }
+.half-column-right { width: 290px; margin: 0 0 25px 0; float: left; }
+.one-third-column-1 { width: 185px; margin: 0 25px 25px 0; float: left; }
+.one-third-column-2 { width: 185px; margin: 0 25px 25px 0; float: left; }
+.one-third-column-3 { width: 185px; margin: 0 0 25px 0; float: left; }
+.one-fourth-column-1 { width: 132px; margin: 0 25px 25px 0; float: left; }
+.one-fourth-column-2 { width: 132px; margin: 0 25px 25px 0; float: left; }
+.one-fourth-column-3 { width: 132px; margin: 0 25px 25px 0; float: left; }
+.one-fourth-column-4 { width: 132px; margin: 0 0 25px 0; float: left; }
+
+
+.contact-form { margin: 0 0 0 25px; overflow: hidden; }
+.contact-form p { margin: 0; }
+	.contact-form td { vertical-align: top; }
+	.contact-form .label { width: 125px; padding: 3px 0 0 0; font-weight: bold; }
+		.contact-form .error-message { text-align: center; color: #ff3535; font-weight: bold; padding: 7px 0 0 0; }
+	.contact-form .comment-spacer-1 { width: 7px; height: 7px; }
+	.contact-form .comment-spacer-2 { width: 8px; height: 8px; }
+	.contact-form .show-all { padding: 0 !important; }
+
+
+.switcher { width: 197px; background-color: rgba(0, 0, 0, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.25); position: absolute; right: 38px; top: 88px; padding: 35px 0 18px 40px; font-size: 14px; font-weight: bold; z-index: 1000; display: none; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-top-left-radius: 4px; }
+	.switcher a { display: block; height: 29px; padding: 9px 0 0 55px; margin: 0 0 20px 0; }
+	.switcher .light { color: #fff; background: url(../images/switcher-ico-light.png) 0 0 no-repeat; }
+	.switcher .dark { color: #9e9e9e; background: url(../images/switcher-ico-dark.png) 0 0 no-repeat; }
+	.switcher .image {  background: url(../images/switcher-ico-image.png) 0 0 no-repeat; }
+	.switcher .active { background-position: 0 -38px; }
+.switcher-button { height: 23px; position: absolute; right: 38px; top: 57px; background-color: rgba(0, 0, 0, 0.8); display: block; z-index: 1000; font: 12px Ropa Sans; color: #fff; padding: 9px 14px 0 14px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+.switcher-button:hover { color: #fff; }
+	.switcher-button span { background: url(../images/arrow-4.png) right 4px no-repeat; padding: 0 15px 0 0; }
+	.switcher-button-active span { background: url(../images/arrow-4.png) right -89px no-repeat; }
+.switcher-active { display: block; }

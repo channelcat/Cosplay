@@ -65,6 +65,8 @@ var ControllerClass = {
 	output: function(name, variables) 
 	{		
 	    try {
+	    	if (variables === undefined) variables = {};
+	    	
 			// Setup extra variables
 			if (variables.validators != undefined) {
 				var self = this;

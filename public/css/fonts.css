@@ -1,0 +1,62 @@
+.tag-1, .tag-2, .tag-3 { font: 13px Ropa Sans; }
+
+	.pages a { font: 14px Ropa Sans; }
+
+.sidebar-title { font: 24px Ropa Sans; }
+
+	.tabs-1 a { font: 14px Ropa Sans; }
+
+.more-link { font: 14px Ropa Sans; }
+
+	div.message-success h3 { font: 30px Ropa Sans; }
+	div.message-success h4 { font: 14px Ropa Sans; }
+
+	div.message-error h3 { font: 30px Ropa Sans; }
+	div.message-error h4 { font: 14px Ropa Sans; }
+
+	div.message-no-comments h3 { font: 30px Ropa Sans; }
+	div.message-no-comments h4 { font: 14px Ropa Sans; }
+
+			.main-menu ul li a { font: 18px Ropa Sans; }
+
+	.homepage-blog-items .item h2 { font: 18px/23px Ropa Sans; }
+
+		.homepage-blog-items .item .more-link { font: 14px Ropa Sans; }
+
+		.blog-list .item h2 { font: 26px/32px Ropa Sans; }
+
+			.sidebar .latest-activity .text h5 { font: 17px/23px Ropa Sans; }
+
+			.sidebar .latest-news .text h5 { font: 17px/23px Ropa Sans; }
+
+			.sidebar .latest-news .text-float h5 { font: 17px/23px Ropa Sans; }
+
+	.comments-item .user { font: 17px Ropa Sans; }
+
+	.comments-item .reply { font: 14px Ropa Sans; }
+
+		.comments-author .user span b { font: 12px Ropa Sans; }
+
+	.post .article-title { font: 26px/32px Ropa Sans; }
+
+	.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 { font-family: Ropa Sans; }
+
+		.post .gallery-preview-box .show-all-photos { font: 13px/17px Ropa Sans; }
+
+		.post .contact-form input[type=submit] { font: 14px Ropa Sans; }
+
+	.photo-gallery .article-title { font: 26px/32px Ropa Sans; }
+
+		.photo-gallery .item h2 { font: 16px/20px Ropa Sans; }
+
+	.photo-gallery .navigation { font: 20px Ropa Sans; }
+
+				.portfolio-wrapper .single-column .item .text h2 { font: 26px/32px Ropa Sans; }
+
+				.portfolio-wrapper .two-columns .item .text h2 { font: 26px/32px Ropa Sans; }
+
+	.main-footer .show-more-footer { font: 18px Ropa Sans; }
+
+	.main-footer-contacts h3 { font: 18px Ropa Sans; }
+
+		.main-footer-contacts .message input[type=submit] { font: 14px Ropa Sans; }

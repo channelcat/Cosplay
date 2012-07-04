@@ -1,0 +1,557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- BEGIN html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<!-- BEGIN head -->
+	<head>
+
+		<!-- Title -->
+		<title>Pinword - Premium WordPress Theme</title>
+
+		<!-- Meta Tags -->
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="css/main-stylesheet.css" type="text/css" />
+		<link rel="stylesheet" href="css/shortcodes.css" type="text/css" />
+		<link rel="stylesheet" href="css/color-custom-image.css" type="text/css" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico" type="text/css" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ropa+Sans" type="text/css" />
+
+		<!-- JavaScripts -->
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/jquery.placeholder.min.js" type="text/javascript"></script>
+		<script src="js/jquery.masonry.min.js" type="text/javascript"></script>
+		<script src="js/global.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery(".tab-1").click(function(){
+        var widgetId = jQuery(this).attr("id");
+        jQuery(".tab-1").removeClass('active');
+        jQuery(this).addClass('active');
+        jQuery(".active-widget").hide();
+        jQuery(".active-widget").removeClass('active-widget');
+        jQuery("#"+widgetId+"-widget").addClass('active-widget').fadeIn(300);
+      });                                   
+    });
+    </script>    
+
+	<!-- END head -->
+	</head>
+
+	<!-- BEGIN body -->
+	<body class="top">
+
+
+			<!-- BEGIN .main-body-wrapper -->
+			<div class="main-body-wrapper">
+
+
+				<!-- BEGIN .main-header-wrapper -->
+				<div class="main-header-wrapper">
+
+					<!-- BEGIN .main-header -->
+					<div class="main-header">
+
+						<div class="logo">
+							<a href="#" class="image"><img src="images/logo-pinword-1.png" alt="Pinword" /></a>
+							<span>premium Wordpress theme</span>
+						</div>
+						
+						<div class="search">
+							<input type="text" placeholder="search here" class="trans-1" />
+						</div>
+
+					<!-- END .main-header -->
+					</div>
+
+				<!-- END .main-header-wrapper -->
+				</div>
+
+
+				<!-- BEGIN .main-content-wrapper -->
+				<div class="main-content-wrapper">
+
+					<!-- BEGIN .main-menu -->
+					<div class="main-menu">
+						<table>
+							<tr>
+								<td>
+									<ul>
+										<li><a href="homepage.html">Homepage</a></li>
+										<li>
+											<a href="blog.html"><span>Blog</span></a>
+											<ul>
+												<li><a href="blog.html">Main blog list</a></li>
+												<li><a href="post.html">Single post test entry</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="photo-galleries.html"><span>Photo gallery</span></a>
+											<ul>
+												<li><a href="photo-galleries.html">Photo gallery index</a></li>
+												<li><a href="photo-galleries-list.html">Opened gallery image list</a></li>
+												<li><a href="photo-galleries-single.html">Single image</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#"><span>Pages</span></a>
+											<ul>
+												<li><a href="portfolio-single-column.html">Portfolio single column</a></li>
+												<li><a href="portfolio-two-columns.html">Portfolio two columns</a></li>
+											</ul>
+										</li>
+										<li><a href="shortcodes.html">Shortcodes</a></li>
+										
+										<li><a href="contact-us.html">Contact us</a></li>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					<!-- END .main-menu -->
+					</div>
+
+					<!-- BEGIN .two-columns-wrapper -->
+					<div class="two-columns-wrapper">
+
+
+						<!-- BEGIN .two-columns-left -->
+						<div class="two-columns-left">
+
+							<!-- BEGIN .blog-list -->
+							<div class="blog-list">
+
+								<div class="item">
+									<h2><a href="#">Proin luctus ullamcorper vulputate nunc vitae</a></h2>
+									<div class="info">
+										<a href="#" class="user">John Smith @ 09.07.2011</a>
+										<a href="#" class="section">Section</a>
+										<a href="#" class="comments">9 comments</a>
+									</div>
+									<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-655x220.jpg" class="trans-1" /></span></a>
+									<p>Morbi sit amet leo lacus. Aliquam quis risus eget sem aliquam laoreet non sit amet nunc. Fusce sem arcu, vestibulum at dictum eu, suscipit placerat libero. Nam sodales eros non massa eleifend sodales. Mauris vitae dui eu urna ultrices euismod.</p>
+									<table>
+										<tr>
+											<td>
+												<a href="#" class="button-1 trans-1"><span>Read more</span></a>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div class="item">
+									<h2><a href="#">Pellentesque in ultricies magnan vitae turpis antein lobortis mauris vivamus aliqua</a></h2>
+									<div class="info">
+										<div class="tag-1">Featured</div>
+										<a href="#" class="user">John Smith @ 09.07.2011</a>
+										<a href="#" class="section">Section</a>
+										<a href="#" class="comments">9 comments</a>
+									</div>
+									<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-655x220.jpg" class="trans-1" /></span></a>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lectus, dictum a suscipit nec, rutrum quis dolor. Quisque sapien nisl, sollicitudin eget ultricies ut, venenatis a est. Fusce quis scelerisque orci. Nunc rhoncus dictum ante accumsan sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+									<table>
+										<tr>
+											<td>
+												<a href="#" class="button-1 trans-1"><span>Read more</span></a>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div class="item">
+									<h2><a href="#">Quisque porta metus vel vehicula accumsanas</a></h2>
+									<div class="info">
+										<div class="tag-2">Fresh news</div>
+										<a href="#" class="user">John Smith @ 09.07.2011</a>
+										<a href="#" class="section">Section</a>
+										<a href="#" class="comments">9 comments</a>
+									</div>
+									<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-655x220.jpg" class="trans-1" /></span></a>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lectus, dictum a suscipit nec, rutrum quis dolor. Quisque sapien nisl, sollicitudin eget ultricies ut, venenatis a est. Fusce quis scelerisque orci. Nunc rhoncus dictum ante accumsan sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante urna, pretium ut luctus ac, hendrerit et urna. Vivamus dictum, erat ut pulvinar faucibus, neque sem suscipit lorem. Sed ante lectus, dictum a suscipit nec, rutrum quis dolor. Quisque sapien nisl, sollicitudin eget.</p>
+									<table>
+										<tr>
+											<td>
+												<a href="#" class="button-1 trans-1"><span>Read more</span></a>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div class="item">
+									<h2><a href="#">Pellentesque in ultricies magnan vitae turpis antein lobortis mauris vivamus aliqua</a></h2>
+									<div class="info">
+										<div class="tag-3">Custom tag</div>
+										<a href="#" class="user">John Smith @ 09.07.2011</a>
+										<a href="#" class="section">Section</a>
+										<a href="#" class="comments">9 comments</a>
+									</div>
+									<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-655x220.jpg" class="trans-1" /></span></a>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lectus, dictum a suscipit nec, rutrum quis dolor. Quisque sapien nisl, sollicitudin eget ultricies ut, venenatis a est. Fusce quis scelerisque orci. Nunc rhoncus dictum ante accumsan sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+									<table>
+										<tr>
+											<td>
+												<a href="#" class="button-1 trans-1"><span>Read more</span></a>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div class="pages">
+									<table>
+										<tr>
+											<td>
+												<a href="#">Previous</a>
+												<a href="#">1</a>
+												<a href="#" class="active">2</a>
+												<a href="#">3</a>
+												<a href="#">4</a>
+												<a href="#">5</a>
+												<a href="#">Next</a>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+							<!-- END .blog-list -->
+							</div>
+
+						<!-- END .two-columns-left -->
+						</div>
+
+
+						<!-- BEGIN .two-columns-right -->
+						<div class="two-columns-right sidebar">
+
+							<!-- BEGIN .sidebar-item .latest-activity -->
+							<div class="sidebar-item">
+								<div class="latest-activity">
+									<div class="sidebar-title">
+										<b>Recent activity</b>
+									</div>
+									<!-- BEGIN .tabs-1 -->
+									<div class="tabs-1">
+										<table>
+											<tr>
+												<td><a href="#" id="popular" class="tab-1 active">Popular</a></td>
+												<td><a href="#" id="recent" class="tab-1">Recent</a></td>
+												<td><a href="#" id="comments" class="tab-1">Comments</a></td>
+											</tr>
+										</table>
+									<!-- END .tabs-1 -->
+									</div>
+									<!-- BEGIN Popular .list -->
+									<div class="list active-widget" id="popular-widget">
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Vestibulum ante ipsum primis in faucibus orci</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Aenean iaculis, risus eget sollicitudin</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Pellentesque aliquet orcid ornare quamsit</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+									<!-- END Popular .list -->
+									</div>
+									<!-- BEGIN Recent .list -->
+									<div class="list" id="recent-widget" style="display: none;">  
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Aenean iaculis, risus eget sollicitudin</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>                  
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Vestibulum ante ipsum primis in faucibus orci</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Pellentesque aliquet orcid ornare quamsit</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+									<!-- END Recent .list -->
+									</div>
+									<!-- BEGIN Comments .list -->
+									<div class="list" id="comments-widget" style="display: none;">   
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Pellentesque aliquet orcid ornare quamsit</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->  
+										</div>                                     
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Vestibulum ante ipsum primis in faucibus orci</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>    
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text">
+												<h5><a href="#">Aenean iaculis, risus eget sollicitudin</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+									<!-- END Comments .list -->
+									</div>                           
+								</div>
+							<!-- END .sidebar-item .latest-activity -->
+							</div>
+
+							<!-- BEGIN .sidebar-item .photo-gallery -->
+							<div class="sidebar-item">
+								<div class="photo-gallery">
+									<div class="sidebar-title">
+										<b>Recent activity</b>
+									</div>
+									<!-- BEGIN .list -->
+									<div class="list">
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+										<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-75x75.jpg" width="75" height="75" class="trans-1" /></span></a>
+									<!-- END .list -->
+									</div>
+								</div>
+							<!-- END .sidebar-item .photo-gallery -->
+							</div>
+
+							<!-- BEGIN .sidebar-item .latest-news -->
+							<div class="sidebar-item">
+								<div class="latest-news">
+									<div class="sidebar-title">
+										<b>Latest news</b>
+									</div>
+									<!-- BEGIN .list -->
+									<div class="list">
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="text">
+												<h5><a href="#">Vestibulum pulvinarlig ulaac purus viver pulvinarlig</a></h5>
+												<div class="info">
+													<a href="#" class="user">09.07.2011</a>
+													<a href="#" class="section">Section</a>
+													<a href="#" class="comments">9</a>
+												</div>
+												<p class="intro">Praesent consequat velit id diam porta ut ultricies enim hendrerit. Morbi leo velit, consectetur at accumsan volutpat, bibendum</p>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="text">
+												<h5><a href="#">Aenean sollicitudin varius nullaaullamcorper turpis dictum ut</a></h5>
+												<div class="info">
+													<a href="#" class="user">09.07.2011</a>
+													<a href="#" class="section">Section</a>
+													<a href="#" class="comments">9</a>
+												</div>
+												<p class="intro">Praesent consequat velit id diam porta ut ultricies enim hendrerit. Morbi leo velit, consectetur at accumsan volutpat, bibendum</p>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="text">
+												<h5><a href="#">Phasellus ornare justo velnulla</a></h5>
+												<div class="info">
+													<a href="#" class="user">09.07.2011</a>
+													<a href="#" class="section">Section</a>
+													<a href="#" class="comments">9</a>
+												</div>
+												<p class="intro">Praesent consequat velit id diam porta ut ultricies enim hendrerit. Morbi leo velit, consectetur at accumsan volutpat, bibendum</p>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+									<!-- END .list -->
+									</div>
+								</div>
+							<!-- END .sidebar-item .latest-news -->
+							</div>
+
+							<!-- BEGIN .sidebar-item .latest-news -->
+							<div class="sidebar-item">
+								<div class="latest-news">
+									<div class="sidebar-title">
+										<b>Latest news</b>
+									</div>
+									<!-- BEGIN .list -->
+									<div class="list">
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text-float">
+												<h5><a href="#">Maecenas pretium facilisis lectus sed</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text-float">
+												<h5><a href="#">Pellentesque aliquet orcid ornare quamsit</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+										<!-- BEGIN .item -->
+										<div class="item">
+											<div class="image">
+												<a href="#" class="image-overlay-1"><span><img src="images/photos/no-image-70x70.jpg" alt="" width="70" height="70" class="trans-1" /></span></a>
+											</div>
+											<div class="text-float">
+												<h5><a href="#">Pellentesque aliquet orcid ornare quamsit</a></h5>
+												<p><a href="#" class="more-link"><span>Read more</span></a></p>
+											</div>
+										<!-- END .item -->
+										</div>
+									<!-- END .list -->
+									</div>
+								</div>
+							<!-- END .sidebar-item .latest-news -->
+							</div>
+
+						<!-- END .two-columns-right -->
+						</div>
+
+
+						<div class="clear"></div>
+
+
+					<!-- END .two-columns-wrapper -->
+					</div>
+
+
+				<!-- END .main-content-wrapper -->
+				</div>
+
+
+				<!-- BEGIN .main-footer-wrapper -->
+				<div class="main-footer-wrapper">
+					<div class="main-footer">
+						<div class="copyright">Copyright &amp; design © 2012 by Orange-Themes.com • <a href="#">Buy this theme at Themeforest</a></div>
+						<a href="#" class="show-more-footer">Use main contact page</a>
+						<div class="social">
+							<a href="#"><img src="images/ico-youtube-1.png" alt="" /></a>
+							<a href="#"><img src="images/ico-facebook-1.png" alt="" /></a>
+							<a href="#"><img src="images/ico-twitter-1.png" alt="" /></a>
+							<a href="#"><img src="images/ico-flickr-1.png" alt="" /></a>
+							<a href="#"><img src="images/ico-rss-1.png" alt="" /></a>
+						</div>
+					</div>
+					<div class="main-footer-contacts-wrapper">
+						<div class="main-footer-contacts">
+							<div class="info">
+								<h3>Contacts and information</h3>
+								<p class="phone">+371 2 83 48 272</p>
+								<p class="email"><a href="#">info@pinword.com</a></p>
+								<p class="text">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis nisi felis, vel ullamcorper dolor. Integer iaculis nisi id nisl porta vestibulum. Etiam urna urna, laoreet a fermentum vel, tincidunt sit amet sem. Vestibulum sapien enim, consectetur quis mollis sed, placerat id orci. Morbi eu sem mi. Donec quis erat ligula, ac eleifend magna.
+								</p>
+							</div>
+							<div class="message">
+								<h3>Send a quick message</h3>
+								<form action="">
+									<p>
+										<label>Your name:</label>
+										<input type="text" class="input-text-1 trans-1" />
+									</p>
+									<p>
+										<label>Your e-mail:</label>
+										<input type="text" class="input-text-1 trans-1" />
+									</p>
+									<p>
+										<label>Your message:</label>
+										<textarea class="textarea-1 trans-1"></textarea>
+									</p>
+									<input type="submit" value="Send it!" class="trans-1" />
+								</form>
+							</div>
+						</div>
+					</div>
+				<!-- END .main-footer-wrapper -->
+				</div>
+
+
+			<!-- END .main-body-wrapper -->
+			</div>
+
+
+	<!-- END body -->
+	</body>
+
+<!-- END html -->
+</html>

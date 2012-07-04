@@ -32,17 +32,13 @@ var Router = {
         }
         // Just a controller
         else if (parts.length == 1) {
-            controllerName = parts[0].toCamel();
-            // Capitalize the first letter
-            controllerName[0] = controllerName[0].toUpperCase();
+            controllerName = parts[0].toCamel().capitalize();
             
             actionName = 'index';
         }
         // Just a controller
         else {
-            controllerName = parts[0].toCamel();
-            // Capitalize the first letter
-            controllerName[0] = controllerName[0].toUpperCase();
+            controllerName = parts[0].toCamel().capitalize();
             
             actionName = parts[1].toCamel();
             // If there's only 1 parameter, label it ID
@@ -58,12 +54,12 @@ var Router = {
         
         // Load controller
         try {
-            controller = require('./controllers/' + host + '/' + controllerName + '.controller');
-        } catch(e) { 
+            controller = require('./Controllers/' + host + '/' + controllerName + '.controller');
+        } catch(e1) { 
             try {
-                controller = require('./controllers/_global/' + controllerName + '.controller');
-            } catch(e) { 
-                console.log('Could not find controller ' + './controllers/' + host + '/' + controllerName + '.controller' + '.');
+                controller = require('./Controllers/_global/' + controllerName + '.controller');
+            } catch(e2) { 
+                console.log('Could not find controller ' + './Controllers/' + host + '/' + controllerName + '.controller - ' + e1.toString());
                 return false; 
             }
         }
