@@ -148,29 +148,68 @@ var UserController =
         if (params.biography != undefined) { this.user.biography = params.biography; }
         
         var image;
-        chain.call(this, function() {
-            if (params.files.avatar && params.files.avatar.size) {
-                image = ImageManip(params.files.avatar.path);
-                image.size(this.next);
-            } else {
-                this.last();
+        chain.call(this, 
+            function() 
+            {
+                if (params.files.avatar && params.files.avatar.size) {
+                    image = ImageManip(params.files.avatar.path);
+                    image.size(this.next);
+                } else {
+                    this.last();
+                }
+            }, 
+            function(error, size) 
+            {
+                if (error) return this.error('Unable to process avatar.  The file is not a valid image. ' + error);
+                
+                this.cropResize( image, size, Config.user.avatar_size, Config.user.avatar_size );
+                
+                image.write(this.user.avatar_path, this.next);
+            }, 
+            function(error) 
+            {
+                if (error) return this.error('Unable to save avatar.' + error);
+                
+                // Save the changes made
+                this.user.save();
+                 
+                return this.output('edit', { saved: 1 });
             }
-        }, function(error, size) {
-            if (error) return this.error('Unable to process avatar.  The file is not a valid image. ' + error);
+        );
+    },
+    
+    cropResize: function(image, size, newWidth, newHeight)
+    {
+        // If the image is not the same dimensions as an avatar
+        if ( size.width != newWidth || size.height != newHeight ) {
             
-            if (size.height != Config.user.avatar_size || size.height != Config.user.avatar_size) {
-                image.resize(Config.user.avatar_size, Config.user.avatar_size);
+            // If an image is not the same aspect ratio of an avatar
+            var inputRatio = size.width/size.height;
+            var newRatio = newWidth / newHeight;
+            
+            var resizeWidth = newWidth;
+            var resizeHeight = newHeight;
+            
+            // If the inputted image is wider than the avatar
+            if (inputRatio > newRatio) {
+                resizeWidth = size.width * newHeight / size.height;
+            }
+            // // If the inputted image is taller than the avatar
+            if (inputRatio < newRatio) {
+                resizeHeight = size.height * newWidth / size.width;
             }
             
-            image.write(this.user.avatar_path, this.next);
-        }, function(error) {
-            if (error) return this.error('Unable to save avatar.' + error);
+            // do the deed
+            image.resize(resizeWidth, resizeHeight);
             
-            // Save the changes made
-            this.user.save();
-             
-            return this.output('edit', { saved: 1 });
-        });
+            // Crop the resized image if it does not match the new dimensions
+            if (newWidth != resizeWidth || newHeight != resizeHeight)
+                image.crop(newWidth, newHeight, (resizeWidth - newWidth) / 2, (resizeHeight - newHeight) / 2);
+               
+            // console.log('resize', size.width, size.height);
+            // console.log('to', newWidth, newHeight);
+            // console.log('crop', resizeWidth, resizeHeight, (resizeWidth - newWidth) / 2, (resizeHeight - newHeight) / 2);
+        }
     }
 };
 

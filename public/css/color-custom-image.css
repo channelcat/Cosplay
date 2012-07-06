@@ -8,11 +8,11 @@ body { background: url(../images/photos/photo-58.jpg) top center fixed; }
 .full-width-wrapper { background-color: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(0, 0, 0, 0.9); }
 
 
-.portfolio-wrapper .single-column .item { background-color: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(0, 0, 0, 0.9); }
-.portfolio-wrapper .two-columns .item { background-color: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(0, 0, 0, 0.9); }
+.portfolio-wrapper .single-column .container { background-color: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(0, 0, 0, 0.9); }
+.portfolio-wrapper .two-columns .container { background-color: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(0, 0, 0, 0.9); }
 
 
-	.homepage-blog-items .item { background-color: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(0, 0, 0, 0.9); }
+	.homepage-blog-items .container { background-color: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(0, 0, 0, 0.9); }
 
 
 .main-header-wrapper { background: url(../images/header-bg-custom-image-1.png) 0 0 repeat-x; }

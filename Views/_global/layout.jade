@@ -7,7 +7,7 @@ html(lang="en")
     script(type='text/javascript',src='/js/validation.js')
     script(type='text/javascript',src='/js/global.js')
     script(type='text/javascript')!=js_inline
-    link(rel='stylesheet',type='text/css',href='/css/sreset.css')
+    link(rel='stylesheet',type='text/css',href='/css/reset.css')
     link(rel='stylesheet',type='text/css',href='/css/main-stylesheet.css')
     link(rel='stylesheet',type='text/css',href='/css/shortcodes.css')
     link(rel='stylesheet',type='text/css',href='/css/color-ligzht.css')
@@ -45,12 +45,18 @@ html(lang="en")
                     li!= currentUser.link
                       ul
                         li
+                          a(href='/picture/create/') Submit Picture
+                        li
+                          a(href='/tutorial/create/') Submit Tutorial
+                        li
                           a(href='/user/edit/') Settings
+                        li
+                          a(href='/user/logout/') Logout
         .two-columns-wrapper
           .two-columns-left
             .blog-list
               -if (errors.length != 0)
-                .item
+                .container
                   h2 
                     a Error!
                   for error in errors
