@@ -239,6 +239,49 @@ var ControllerClass = {
         var date = new Date();
         date.setYear(1900);
         this.cookies.set('session', '', { expires: date });
+    },
+    
+    /**
+     * Resizes and crops an image based on the inputted height and
+     * width.
+     * 
+	 * @param {Object} image handle
+	 * @param {Object} image size
+	 * @param {Object} new width
+	 * @param {Object} new height
+     */
+    _cropResize: function(image, size, newWidth, newHeight)
+    {
+        // If the image is not the same dimensions as an avatar
+        if ( size.width != newWidth || size.height != newHeight ) {
+            
+            // If an image is not the same aspect ratio of an avatar
+            var inputRatio = size.width/size.height;
+            var newRatio = newWidth / newHeight;
+            
+            var resizeWidth = newWidth;
+            var resizeHeight = newHeight;
+            
+            // If the inputted image is wider than the avatar
+            if (inputRatio > newRatio) {
+                resizeWidth = size.width * newHeight / size.height;
+            }
+            // // If the inputted image is taller than the avatar
+            if (inputRatio < newRatio) {
+                resizeHeight = size.height * newWidth / size.width;
+            }
+            
+            // do the deed
+            image.resize(resizeWidth, resizeHeight);
+            
+            // Crop the resized image if it does not match the new dimensions
+            if (newWidth != resizeWidth || newHeight != resizeHeight)
+                image.crop(newWidth, newHeight, (resizeWidth - newWidth) / 2, (resizeHeight - newHeight) / 2);
+               
+            // console.log('resize', size.width, size.height);
+            // console.log('to', newWidth, newHeight);
+            // console.log('crop', resizeWidth, resizeHeight, (resizeWidth - newWidth) / 2, (resizeHeight - newHeight) / 2);
+        }
     }
 };
 

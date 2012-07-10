@@ -8,7 +8,7 @@
 
 var PhotoModel = new Schema({
     id: Number,
-    title: { type: String, index: { unique: true } }
+    title: { type: String }
 });
 
 module.exports = { collection: 'photos', schema: PhotoModel };

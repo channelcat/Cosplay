@@ -19,9 +19,13 @@ var PhotoController =
     
 	create: function(params) 
 	{
-	    this.title += 'Gallery';
+	    this.title += 'Submit Photo';
 	    
-		return this.output('index');
+	    if (params.create != undefined) {
+	    	return this.output('registered', {});
+	    }
+	    
+		return this.output('create');
 	}
 };
 

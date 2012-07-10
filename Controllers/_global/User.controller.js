@@ -25,12 +25,10 @@ var UserController =
         this.title += 'Register';
                 
         if (params.register != undefined) {
-            console.log('registering');
         	var result = Validations.User.register.validate(params);
             
             // All inputted data passed the validations
 			if (result.passed) {
-            console.log('passed');
                 // Grab the latest user ID and increment by 1                
                 chain.call(this,
                     // Fetch the user a unique name based on their email address
@@ -162,7 +160,7 @@ var UserController =
             {
                 if (error) return this.error('Unable to process avatar.  The file is not a valid image. ' + error);
                 
-                this.cropResize( image, size, Config.user.avatar_size, Config.user.avatar_size );
+                this._cropResize( image, size, Config.user.avatar_size, Config.user.avatar_size );
                 
                 image.write(this.user.avatar_path, this.next);
             }, 
@@ -176,40 +174,6 @@ var UserController =
                 return this.output('edit', { saved: 1 });
             }
         );
-    },
-    
-    cropResize: function(image, size, newWidth, newHeight)
-    {
-        // If the image is not the same dimensions as an avatar
-        if ( size.width != newWidth || size.height != newHeight ) {
-            
-            // If an image is not the same aspect ratio of an avatar
-            var inputRatio = size.width/size.height;
-            var newRatio = newWidth / newHeight;
-            
-            var resizeWidth = newWidth;
-            var resizeHeight = newHeight;
-            
-            // If the inputted image is wider than the avatar
-            if (inputRatio > newRatio) {
-                resizeWidth = size.width * newHeight / size.height;
-            }
-            // // If the inputted image is taller than the avatar
-            if (inputRatio < newRatio) {
-                resizeHeight = size.height * newWidth / size.width;
-            }
-            
-            // do the deed
-            image.resize(resizeWidth, resizeHeight);
-            
-            // Crop the resized image if it does not match the new dimensions
-            if (newWidth != resizeWidth || newHeight != resizeHeight)
-                image.crop(newWidth, newHeight, (resizeWidth - newWidth) / 2, (resizeHeight - newHeight) / 2);
-               
-            // console.log('resize', size.width, size.height);
-            // console.log('to', newWidth, newHeight);
-            // console.log('crop', resizeWidth, resizeHeight, (resizeWidth - newWidth) / 2, (resizeHeight - newHeight) / 2);
-        }
     }
 };
 
