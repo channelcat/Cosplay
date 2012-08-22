@@ -94,7 +94,7 @@ Debug = {
 };
  
 // Make sure we advance using the corrext next
-next = function(){ console.log('OUT OF CONTEXT CALL TO NEXT!'); };
+next = function(){ console.log('OUT OF CONTEXT CALL TO NEXT @ ' + arguments.callee.caller.arguments.callee.caller + '!'); };
 chain = function()
 {
     // If this.chain exists, context is root, otherwise, context was applied
@@ -123,13 +123,13 @@ chain = function()
     // Restart the chain
     parent.first = function(){
         current = 0;
-        next.apply(this, arguments);
+        this.next.apply(this, argumests);
     };
     
     // Finish the chain
     parent.last = function(){
         current = functions.length-1;
-        next.apply(this, arguments);
+        this.next.apply(this, arguments);
     };
     
     // Get the ball rolling

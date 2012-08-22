@@ -28,18 +28,17 @@ var server = new Server(function(request, response) {
             
         var controller = new route.controller(request, response);
         try {
+        	// Give the controller 3 seconds to render or just cut it off
             var timer = setTimeout(function(){
                 if (!response.finished) {
                     response.writeHead( 500, {'content-type': 'text/html'} );
                     response.end('500d!  Infinite poop :( ' + controller.name);
                     console.log('had to kill ', route);
                 }
+                delete response;
             }, 3000);
             
-            controller.execute(route.action, route.params, function(output){
-                response.writeHead( 200, {'content-type': 'text/html'} );
-                response.end(output);
-            });
+            controller.execute(route.action, route.params, response);
         } catch (e) {
             response.writeHead( 500, {'content-type': 'text/html'} );
             response.end('500d!  We encountered an error while processing your request :( ' + e.toString());

@@ -22,7 +22,7 @@ var PhotoController =
 	    this.title += 'Submit Photo';
 	    
 	    if (params.create != undefined) {
-	    	return this.output('registered', {});
+	    	return this.redirect({ action: 'view', params: [ 1 ] });
 	    }
 	    
 		return this.output('create');

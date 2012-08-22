@@ -30,12 +30,12 @@ var ControllerClass = {
 	    this.beforeFilters.push('createSession');
 	},
 	
-	execute: function(action, params, callback)
+	execute: function(action, params, response)
 	{
-	    this.renderCallback = callback;
+	    this.response = response;
 	    this.actionCallback = function(){ 
 	        try { this[action](params); } 
-	        catch(e) { this.renderCallback('Controller Action Error! ' + e); } 
+	        catch(e) { this.renderError('Controller Action Error! ' + e); } 
 	    };
 	    
 	    // Execute before filters
@@ -57,7 +57,7 @@ var ControllerClass = {
 	        if (this.filters.current == FILTERS_BEFORE) {
 	            this.actionCallback();
 	        } else {
-	            this.renderCallback(this.buffer);
+	            this.renderSuccess(this.buffer);
 	        }
 	    }
 	},
@@ -107,10 +107,10 @@ var ControllerClass = {
                     this[this.afterFilters[f]](params);
                 }
             } else {
-                this.renderCallback(this.buffer);
+                this.renderSuccess(this.buffer);
             }
 	    } catch (e) {
-	        this.renderCallback('Render error! ' + e.toString());
+	        this.renderError('Render error! ' + e.toString());
 	    }
 	},
 	
@@ -277,12 +277,36 @@ var ControllerClass = {
             // Crop the resized image if it does not match the new dimensions
             if (newWidth != resizeWidth || newHeight != resizeHeight)
                 image.crop(newWidth, newHeight, (resizeWidth - newWidth) / 2, (resizeHeight - newHeight) / 2);
-               
-            // console.log('resize', size.width, size.height);
-            // console.log('to', newWidth, newHeight);
-            // console.log('crop', resizeWidth, resizeHeight, (resizeWidth - newWidth) / 2, (resizeHeight - newHeight) / 2);
         }
-    }
+    },
+    
+    renderSuccess: function(output)
+    {
+        this.response.writeHead( 200, {'content-type': 'text/html'} );
+    	this.response.end(output);
+    	this.response.finished = true;
+    },
+    renderError: function(output)
+    {
+        this.response.writeHead( 500, {'content-type': 'text/html'} );
+    	this.response.end(output);
+    	this.response.finished = true;
+    },
+    
+	/**
+	 * Redirects a request using the location header 
+	 */
+	redirect: function(location)
+	{
+		// If an object was passed in, redirect to a controller action instead
+		if (typeof location === 'object') {
+			location = '/' + this.name.substr(this.name.indexOf('/') + 1).toLowerCase() + '/' + location.action.toLowerCase() + '/' + location.params.join('/');
+		}
+		
+        this.response.writeHead( 200, { 'Location': location } );
+    	this.response.end('');
+    	this.response.finished = true;
+	},
 };
 
 Controller = Class.create(ControllerClass);
