@@ -24,13 +24,41 @@ var UserController =
     {
         this.title += 'Register';
                 
+        var controller = this;
+        var renderRegister = function(){
+        	controller.output('register', {
+	        	js: ['user/register'],
+	            months: require_base('Date').months,
+	            params: params,
+	            validators: [ Validations.User.register ]
+	        });
+	    };
+	    
         if (params.register != undefined) {
         	var result = Validations.User.register.validate(params);
             
             // All inputted data passed the validations
 			if (result.passed) {
-                // Grab the latest user ID and increment by 1                
+                // Grab the latest user ID and increment by 1 
                 chain.call(this,
+                	// Check for email in use
+                    function(){
+                        DB.User.findOne({ email: params.email }, this.next);
+                    },
+                    function(error, user){
+                    	// Email is free!
+                        if (!user){
+                        	this.next();
+                        }
+                        // Email is taken
+                        else {
+                        	this.errors = ['Email is in use.'];
+                        	
+                        	renderRegister();
+                        	
+                        	this.end();
+                        }
+                    },
                     // Fetch the user a unique name based on their email address
                     function(){
                         var continueFunction = this.next;
@@ -81,12 +109,7 @@ var UserController =
 	        }
         }
         
-        return this.output('register', {
-        	js: ['user/register'],
-            months: require_base('Date').months,
-            params: params,
-            validators: [ Validations.User.register ]
-        });
+	    renderRegister();
     },
     
     // Log out
@@ -105,9 +128,18 @@ var UserController =
     // Log out
     check_email: function(params) 
     {
-    	return this.error('Email in use bro');
-        return this.output_json({
-        	success: true
+    	var self = this;
+    	
+    	if (params.email === undefined)
+    		return self.error('No email received.');
+    	
+    	DB.User.findOne({ email: params.email }, function(error, user){
+            // Name is free!
+            if (!user) {
+                return self.output_json({ message: 'Email not in use.'});
+            } else {
+    			return self.error('Email is currently in use.');
+            }
         });
     },
     

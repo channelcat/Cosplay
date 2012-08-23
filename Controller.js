@@ -288,6 +288,9 @@ var ControllerClass = {
         
         // Create the session cookie
         this.cookies.set('session', sessionId);
+        
+        // Logged in
+        this.user.loggedIn = true;
     },
     
     /**

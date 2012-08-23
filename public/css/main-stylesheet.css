@@ -483,10 +483,18 @@ form > ul > li {
 /* Status
  ***********************************************/
 
-span.error {
+.error {
 	background: #A22;
 	border-radius: 5px;
 	padding: 3px 5px;
+}
+.success {
+	background: #2A2;
+	border-radius: 5px;
+	padding: 3px 5px;
+}
+
+span.status {
 	max-width: 180px;
 	display: block;
 	position: absolute;

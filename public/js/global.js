@@ -6,26 +6,27 @@
 // | Author: Michael Hill <channelcat@gmail.com>                          | 
 // +----------------------------------------------------------------------+ 
 
-$(document).ready(function(){
-	// jquery stylize all of the buttons
-	$('input:submit, button, .button').button();
-	
-	// Ajax handlers
-	$.ajaxSetup({
-		error: function(e){
-			var response = e.responseText;
-			var error = '';
-			try {
-				error = JSON.parse(reponse).error;
-			} catch(e) {
-				error = response;
-			}
-			Cos.error(error);
-		}
-	});
-});
 
 var Cos = {
+	ajax: {
+		error: function(xhr){
+			Cos.error(Cos.ajax.errorMessage(xhr));
+		},
+		// Returns the server's ajax error data from a XHR
+		errorMessage: function(xhr)
+		{
+			var error = '';
+			try {
+				error = JSON.parse(xhr.responseText).error;
+			} catch(e) {
+				error = xhr.responseText;
+			}
+			return error;
+		}
+	},
+	
+	// Creates a new dialog window
+	// Creates the dialog div if it does not exist
 	dialog: function(id, data)
 	{
 		var $dialog = $('#' + id);
@@ -39,6 +40,7 @@ var Cos = {
 		$dialog.html(data.html).dialog(data);
 	},
 	
+	// Creates an error dialog
 	error: function(error)
 	{
 		Cos.dialog('error-dialog', {
@@ -50,6 +52,7 @@ var Cos = {
 		});
 	},
 	
+	// Creates a confirmation dialog
 	confirm: function(message, okFunction)
 	{
 		Cos.dialog('confirm-dialog', {
@@ -62,3 +65,14 @@ var Cos = {
 		});
 	}
 };
+
+$(document).ready(function(){
+	// jquery stylize all of the buttons
+	$('input:submit, button, .button').button();
+	
+	// Ajax handlers
+	$.ajaxSetup({
+		error: Cos.ajax.error,
+		type: 'POST'
+	});
+});

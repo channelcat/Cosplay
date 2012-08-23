@@ -69,14 +69,14 @@ Validations = {
 	},
 	error: {
 		add: function(item, error){
-			var $error = $('<span class="error" />').html(error);
+			var $error = $('<span class="status error" />').html(error);
 			
 			$error.css('left', (item.position().left + item.width()) + 'px');
 			
 			item.after($error);
 		},
 		clear: function(item){
-			item.siblings('span.error').remove();
+			item.siblings('span.status').remove();
 		}
 	}
 };

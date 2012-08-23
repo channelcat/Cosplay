@@ -12,15 +12,18 @@ var user_register = function(){
   			}
   			
   			email_timeout = setTimeout(function(){
-  				$('#register_email_check').html('<span class="loading" />');
+  				$('#register_email_check').html('<span class="loading" />').removeAttr('class');
   				
   				$.ajax({
   					url: '/user/check_email',
-  					success: function(){
-  						$('#register_email_check').html('Email okay!');
+  					data: { email: $('#register input[name="email"]').val() },
+  					success: function(data){
+  						email_okay = true;
+  						$('#register_email_check').addClass('success').html(data.message);
   					},
-  					errorz: function(){
-  						$('#register_email_check').html('Email in use :(');
+  					error: function(xhr){
+  						email_okay = false;
+  						$('#register_email_check').addClass('error').html(Cos.ajax.errorMessage(xhr));
   					}
   				});
   			}, 800);
