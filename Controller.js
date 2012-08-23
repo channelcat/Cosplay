@@ -14,6 +14,9 @@ var crypto = require('crypto');
 var FILTERS_BEFORE = 0;
 var FILTERS_AFTER = 1;
 
+var RENDER_MODE_HTML = 1;
+var RENDER_MODE_JSON = 2;
+
 var ControllerClass = {
     
 	init: function( request, response ){
@@ -25,9 +28,28 @@ var ControllerClass = {
 	    this.buffer = '';
         this.cookies = new cookies( request, response );
         this.title = Config.site.title;
-        this.js_inline = '';
+        this.tpl_js_inline = '';
+        this.tpl_header = '';
+        
+        // Request Data
+		this.request = request;
+		this.renderSettings = {};
+		this.renderMode(RENDER_MODE_HTML);
 	    
 	    this.beforeFilters.push('createSession');
+	},
+	
+	renderMode: function(mode)
+	{
+		this.renderSettings.mode = mode;
+		switch (mode) {
+			case RENDER_MODE_HTML:
+				this.renderSettings.contentType = 'text/html';
+				break;
+			case RENDER_MODE_JSON:
+				this.renderSettings.contentType = 'text/json';
+				break;
+		}
 	},
 	
 	execute: function(action, params, response)
@@ -65,13 +87,15 @@ var ControllerClass = {
 	output: function(name, variables) 
 	{		
 	    try {
+            // ------------------------------------------- //
+            // Variables
+            // ------------------------------------------- //
+            
 	    	if (variables === undefined) variables = {};
-	    	
-			// Setup extra variables
 			if (variables.validators != undefined) {
 				var self = this;
 				variables.validators.each(function(){
-					self.js_inline += this.js();
+					self.tpl_js_inline += this.js();
 				});
 				delete variables.validators;
 			}
@@ -79,10 +103,13 @@ var ControllerClass = {
             variables.extend({
                 title: this.title,
                 errors: this.errors,
-                js_inline: this.js_inline,
                 currentUser: this.user
             });
-		
+            
+            // ------------------------------------------- //
+            // Render Sub-template
+            // ------------------------------------------- //
+            
             var path = './views/' + this.name + '/';
             
             // Render the sub-template
@@ -90,16 +117,40 @@ var ControllerClass = {
             var tplFunction = jade.compile(template);
             
             var body = tplFunction(variables);
-            variables.extend({body: body});
             
-            // Render the entire layout with the template contents
+		
+            // ------------------------------------------- //
+            // Header Items
+            // ------------------------------------------- //
+            if (variables.js !== undefined) {
+            	for ( var j=0; j < variables.js.length; ++j ) {
+            		var name = variables.js[j];
+            		
+            		// TODO: combine files
+            		this.tpl_header += '<script src="/js/' + name + '.js" type="text/javascript"></script>';
+            		// Add the execution code
+            		this.tpl_js_inline += name.replace(/\//g, '_') + '();';
+            	}
+            }
+            variables.js_inline = this.tpl_js_inline;
+            variables.header = this.tpl_header;
+            
+            // ------------------------------------------- //
+            // Render Layout
+            // ------------------------------------------- //
+            
+            variables.extend({ body: body });
+            
             template = fs.readFileSync('./views/_global/layout.jade');
             tplFunction = jade.compile(template);
             
             // Render the main template
             this.buffer += tplFunction(variables);
             
-            // Execute after filters
+            // ------------------------------------------- //
+            // After Filters
+            // ------------------------------------------- //
+            
             this.filters.current = FILTERS_AFTER;
             if (this.afterFilters.length) {
                 for (var f=0; f<this.afterFilters.length; ++f) {
@@ -112,6 +163,12 @@ var ControllerClass = {
 	    } catch (e) {
 	        this.renderError('Render error! ' + e.toString());
 	    }
+	},
+	
+	output_json: function(variables) 
+	{
+		this.renderMode(RENDER_MODE_JSON);
+    	this.renderSuccess(JSON.stringify(variables));
 	},
 	
 	createSession: function(params)
@@ -194,8 +251,14 @@ var ControllerClass = {
      * Renders an error page
      */
     error: function(text) {
-    	// Render the error
-		this.output('../error', { error: text });
+    	// JSON Error
+    	if (this.renderSettings.mode === RENDER_MODE_JSON) {
+    		this.renderError(JSON.stringify({ error: text }));
+    	} 
+    	// HTML Error
+    	else {
+			this.output('../error', { error: text });
+    	}
     },
     
     /**
@@ -282,13 +345,13 @@ var ControllerClass = {
     
     renderSuccess: function(output)
     {
-        this.response.writeHead( 200, {'content-type': 'text/html'} );
+        this.response.writeHead( 200, {'content-type': this.renderSettings.contentType} );
     	this.response.end(output);
     	this.response.finished = true;
     },
     renderError: function(output)
     {
-        this.response.writeHead( 500, {'content-type': 'text/html'} );
+        this.response.writeHead( 500, {'content-type': this.renderSettings.contentType} );
     	this.response.end(output);
     	this.response.finished = true;
     },

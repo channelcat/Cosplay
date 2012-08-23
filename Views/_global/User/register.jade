@@ -1,11 +1,19 @@
 .container
-  h2 Register
-  .content(id='register') Free cookies with every registration :D
+  h2 
+    a Sign up for the low cost of FREE!
+  .content(id='register')
+    p.hook 
+      span Not only does signing up prove your OUTSTANDING intellegence and good looks, but as a member, you'll be able to:
+    ul.reasons
+      li Build a network of fellow cosplayers, photographers, and friends.
+      li Share your amazing cosplay and prop ideas and creations with the world!
+      li Get tips, tricks, or even just chat with other working professionals and aspiring artists.
     form(method='post',validation='User.register')
       ul
         li
           label(for='email') Email
           input(name='email',id='email',placeholder='Email')
+          span#register_email_check
         li
           label(for='password') Password
           input(name='password',id='password',placeholder='Password',type='password')
@@ -25,6 +33,3 @@
               option(value=year, selected=(year==params.birthdayYear ? 'selected':undefined))= year
         li
           input(type='submit',name='register',value='Register')
-          
-script(type='text/javascript')
-  $('input[name="birthday"]').datepicker();

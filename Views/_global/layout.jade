@@ -6,7 +6,6 @@ html(lang="en")
     script(type='text/javascript',src='/js/jquery-ui-1.8.16.custom.min.js')
     script(type='text/javascript',src='/js/validation.js')
     script(type='text/javascript',src='/js/global.js')
-    script(type='text/javascript')!=js_inline
     link(rel='stylesheet',type='text/css',href='/css/reset.css')
     link(rel='stylesheet',type='text/css',href='/css/main-stylesheet.css')
     link(rel='stylesheet',type='text/css',href='/css/shortcodes.css')
@@ -14,6 +13,8 @@ html(lang="en")
     link(rel='stylesheet',type='text/css',href='http://fonts.googleapis.com/css?family=Pacifico')
     link(rel='stylesheet',type='text/css',href='http://fonts.googleapis.com/css?family=Ropa+Sans')
     link(rel='stylesheet',type='text/css',href='/css/jquery/jquery-ui-1.8.16.custom.css')
+    !{header}
+    script(type='text/javascript')!=js_inline
   body.top
     .main-body-wrapper
       .main-header-wrapper
@@ -21,7 +22,7 @@ html(lang="en")
           .logo
             a.image(href='/',alt='Lost Cos')
               img(src="/images/layout/logo.png")
-            span Testing 1 2 3
+            span It's not a phase dad!
           .search
             input.trans-1(type="text",placeholder="search here")
       .main-content-wrapper

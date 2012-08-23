@@ -208,7 +208,7 @@ div.message-no-comments { min-height: 70px; background: url(/images/layout/ico-c
 			.blog-list .container .info .section:hover { background-position: 0 -189px; }
 			.blog-list .container .info .comments { padding: 0 0 0 19px; background: url(/images/layout/ico-comments-1.png) 0 2px no-repeat; }
 			.blog-list .container .info .comments:hover { background-position: 0 -188px; }
-		.blog-list .container p { padding: 20px 25px; }
+		.blog-list .container p, .blog-list .container .content { padding: 20px 25px; }
 		.blog-list .container table { margin: 0 auto; }
 		.blog-list .container td { height: 33px; }
 	.blog-list .tag-1, .blog-list .tag-2, .blog-list .tag-3 { margin: 50px 0 0 -28px; }
@@ -453,7 +453,10 @@ div.message-no-comments { min-height: 70px; background: url(/images/layout/ico-c
 
 
 
-/* Registration 
+/* LAYOUT
+ *****************************************************************************************************************************/
+
+/* Forms
  ***********************************************/
 form label {
 	display: inline-block;
@@ -472,4 +475,62 @@ form textarea {
 form input[type='submit'] {
 	clear: both;
 	display: block;
+}
+form > ul > li {
+	position: relative;
+}
+
+/* Status
+ ***********************************************/
+
+span.error {
+	background: #A22;
+	border-radius: 5px;
+	padding: 3px 5px;
+	max-width: 180px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 430px;
+	margin-left: 10px;
+}
+
+span.loading {
+	display: inline-block;
+	width: 100px;
+	height: 15px;
+	background: url('/images/icons/loading/loading15.gif') no-repeat 50% 50%;
+}
+
+/* PAGES
+ *****************************************************************************************************************************/
+
+/* Registration
+ ***********************************************/
+
+#register p.hook {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+#register ul.reasons {
+	list-style: square;
+	padding: 0 0 0 20px;
+	}
+	#register ul.reasons li {
+		font-size: 1.1em;
+		margin-top: 10px;
+	}
+#register form {
+	margin-top: 40px;
+}
+#register form li {
+	margin-top: 10px;
+}
+#register input[type="submit"] {
+	margin: 30px 0 0 160px;
+}
+#register #register_email_check {
+	line-height: 16px;
+	margin: 0 0 0 10px;
 }

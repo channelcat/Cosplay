@@ -37,6 +37,9 @@ Validations = {
     		}
     		// Age check
     		else if (validation.age != undefined) {
+    			// Change the field to the last in the list
+    			field = $('[name="'+validation.field+'Year"]', form);
+    			
     			var selectedDate = 	($('[name="'+validation.field+'Year"]', form).val() || 0) * 10000 +
     								($('[name="'+validation.field+'Month"]', form).val() || 0) * 100 +
     								($('[name="'+validation.field+'Day"]', form).val() || 0) * 1;
@@ -49,6 +52,9 @@ Validations = {
     			if ( selectedDate < maxDate || selectedDate > minDate ) pass = false;
     		}
     		
+    		// Clear all errors
+    		Validations.error.clear(field);
+    		
     		// If we failed this pass
     		if (pass == false) { 
     			errors.push({ error: validation.message, field: field, variable: validation.field });
@@ -60,6 +66,18 @@ Validations = {
     		passed: passed,
     		errors: errors
     	};
+	},
+	error: {
+		add: function(item, error){
+			var $error = $('<span class="error" />').html(error);
+			
+			$error.css('left', (item.position().left + item.width()) + 'px');
+			
+			item.after($error);
+		},
+		clear: function(item){
+			item.siblings('span.error').remove();
+		}
 	}
 };
 
@@ -73,9 +91,8 @@ $(document).ready(function(){
 				
 				var output = '';
 				$.each(result.errors, function(){
-					output += this.error + "\n";
+					Validations.error.add(this.field, this.error);
 				});
-				alert(output);
 			}
 		});
 	});

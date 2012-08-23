@@ -82,6 +82,7 @@ var UserController =
         }
         
         return this.output('register', {
+        	js: ['user/register'],
             months: require_base('Date').months,
             params: params,
             validators: [ Validations.User.register ]
@@ -99,6 +100,15 @@ var UserController =
         this.cookies.set('session', '', { expires: date });
         
         return this.output('logout', {});
+    },
+    
+    // Log out
+    check_email: function(params) 
+    {
+    	return this.error('Email in use bro');
+        return this.output_json({
+        	success: true
+        });
     },
     
     // User Profile
