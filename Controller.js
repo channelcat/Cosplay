@@ -142,7 +142,7 @@ var ControllerClass = {
             
             variables.extend({ body: body });
             
-            template = fs.readFileSync('./views/_global/layout.jade');
+            template = fs.readFileSync('./Views/_global/layout.jade');
             tplFunction = jade.compile(template);
             
             // Render the main template

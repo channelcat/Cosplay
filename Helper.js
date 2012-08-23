@@ -12,11 +12,11 @@ Helpers = {};
 
 var Helper = {
     init: function( host, port, database, callback ) {
-        var files = fs.readdirSync('./helpers/');
+        var files = fs.readdirSync('./Helpers/');
         var helpers = {};
         for ( var f=0; f < files.length; ++f ) {
             var name = files[f].match(/(.+?)\.helper/i)[1];
-            var helper = require('./helpers/' + files[f]);
+            var helper = require('./Helpers/' + files[f]);
             Helpers = Helpers.extend(helper);
         }
         return helpers;
