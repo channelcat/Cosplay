@@ -111,7 +111,7 @@ var ControllerClass = {
             // Render Sub-template
             // ------------------------------------------- //
             
-            var path = './views/' + this.name + '/';
+            var path = './Views/' + this.name + '/';
             
             // Render the sub-template
             var template = fs.readFileSync(path + name + '.jade');
