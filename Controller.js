@@ -34,7 +34,8 @@ var ControllerClass = {
         // Request Data
 		this.request = request;
 		this.renderSettings = {};
-		this.renderMode(RENDER_MODE_HTML);
+		// Do we expect JSON or HTML?
+		this.renderMode(this.request.headers['x-requested-with'] === 'XMLHttpRequest' ? RENDER_MODE_JSON : RENDER_MODE_HTML);
 	    
 	    this.beforeFilters.push('createSession');
 	},

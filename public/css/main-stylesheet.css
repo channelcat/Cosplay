@@ -523,14 +523,17 @@ span.loading {
 	}
 #register form {
 	margin-top: 40px;
-}
-#register form li {
-	margin-top: 10px;
-}
+	}
+	#register form li {
+		margin-top: 10px;
+	}
 #register input[type="submit"] {
 	margin: 30px 0 0 160px;
 }
 #register #register_email_check {
-	line-height: 16px;
 	margin: 0 0 0 10px;
-}
+	}
+	#register #register_email_check .loading {
+		position: relative;
+		top: 3px;
+	}

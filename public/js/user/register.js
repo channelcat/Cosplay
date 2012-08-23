@@ -19,7 +19,7 @@ var user_register = function(){
   					success: function(){
   						$('#register_email_check').html('Email okay!');
   					},
-  					error: function(){
+  					errorz: function(){
   						$('#register_email_check').html('Email in use :(');
   					}
   				});
