@@ -168,7 +168,11 @@ var UserController =
         
         if (!this.checkLogin()) return;
         
+        this.add_js('external/fileupload/jquery.fileupload');
+        this.add_js('external/fileupload/jquery.iframe-transport');
+        
         return this.output('edit', { 
+        	js: ['user/edit'],
         	params: params,
             validators: [ Validations.User.profile ]
         });
@@ -187,6 +191,17 @@ var UserController =
         if (params.profile_type != undefined) { this.user.profile_type = params.profile_type; }
         if (params.biography != undefined) { this.user.biography = params.biography; }
         
+        // Save the changes made
+        this.user.save();
+         
+        return this.output_json({ saved: 1 });
+    },
+    
+    // Edit User Profile
+    avatar: function(params)
+    {
+        if (!this.checkLogin()) return;
+
         var image;
         chain.call(this, 
             function() 
@@ -211,9 +226,10 @@ var UserController =
                 if (error) return this.error('Unable to save avatar.' + error);
                 
                 // Save the changes made
+                this.user.has_avatar = true;
                 this.user.save();
-                 
-                return this.output('edit', { saved: 1 });
+                
+                return this.output_json({ saved: 1, id: this.user.id, url: this.user.avatar_url });
             }
         );
     }

@@ -28,24 +28,53 @@ var Server = {
             }
         }
     },
+    addFile: function(path) {
+    	this.staticFiles[path] = 1;
+    },
+    removeFile: function(path) {
+    	delete this.staticFiles[path];
+    },
 	init: function( router ) {
 	    var self = this;
 	    
 	    // Build the file list
 	    this.readDirectory( Config.server.documentRoot, '' );
-	    console.log(this.staticFiles);
 	    
 		this.server = require('http').createServer( function( request, response ) {
-		    if (self.staticFiles[request.url]) {
-		        console.log('static! ' + request.url);
-		        var extension = path.extname(request.url);
+			// Determine the file being requested without the query string
+			var queryCheck = request.url.indexOf('?');
+			var url = (queryCheck !== -1) ? request.url.substr(0, queryCheck) : request.url;
+			
+			var dynamic = (request.url.substr(0, 3) === '/d/');
+			
+			// Request for static/dynamic files
+		    if (self.staticFiles[request.url] || dynamic) {
+		        console.log( (dynamic ? 'dynamic' : 'static' ) + '! ' + request.url);
+		        // Detect content type
+		        var extension = path.extname(url);
 		        var contentType = (contentTypes[extension] != undefined) ? contentTypes[extension] : 'text/html';
-		        fs.readFile(Config.server.documentRoot + request.url, function (err, data) {
-                    response.writeHead( 200, {'content-type': contentType} );
-                    response.end(data);
+		        
+		        // For dynamic files, read from dynamic root
+		        var filePath = dynamic ? 
+		        	Config.server.dynamicRoot + url.substr(2) :
+		        	Config.server.documentRoot + url;
+		        
+		        // Serve file!
+		        fs.readFile(filePath, function (err, data) {
+		        	if (!err) {
+	                    response.writeHead( 200, {'content-type': contentType} );
+	                    response.end(data);
+		        	}
+		        	else {
+		        		console.log('404 for ' + filePath + ':(');
+	                    response.writeHead( 404, {'content-type': 'text/html'} );
+	                    response.end('File not found');
+		        	}
                 });
-	        } else {
-                console.log('dynamic! ' + request.url);
+	        } 
+	        // Request for APP
+	        else {
+                console.log('application! ' + request.url);
                 
 	            // Assemble the post data
                 if (request.method == 'POST') {

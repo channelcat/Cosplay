@@ -19,17 +19,6 @@
           input(name='password',id='password',placeholder='Password',type='password')
         li
           label(for='birthday') Birthday
-          - var days = [], years = [], year = (new Date()).getFullYear();
-          - for ( var y=0; y<110; ++y ) { years.push(year - y); }
-          - for ( var d=1; d<32; ++d ) { days.push(d); }
-          select(name='birthdayMonth')
-            each month in months
-              option(value=month.value, selected=(month.value==params.birthdayMonth ? 'selected':undefined))= month.name
-          select(name='birthdayDay')
-            each day in days
-              option(value=day, selected=(day==params.birthdayDay ? 'selected':undefined))= day
-          select(name='birthdayYear')
-            each year in years
-              option(value=year, selected=(year==params.birthdayYear ? 'selected':undefined))= year
+          !=form.date('birthday')
         li
           input(type='submit',name='register',value='Register')

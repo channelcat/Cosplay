@@ -11,7 +11,8 @@ Config = {
 		address: '127.0.0.1',
 		port: 80,
 		domain: 'lostcos.com',
-		documentRoot: 'public'
+		documentRoot: 'public',
+		dynamicRoot: 'dynamic'
 	},
 	database: {
 	    address: '127.0.0.1',

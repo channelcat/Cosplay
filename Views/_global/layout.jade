@@ -2,19 +2,18 @@
 html(lang="en")
   head
     title #{title}
-    script(type='text/javascript',src='/js/jquery-1.6.2.min.js')
-    script(type='text/javascript',src='/js/jquery-ui-1.8.16.custom.min.js')
-    script(type='text/javascript',src='/js/validation.js')
-    script(type='text/javascript',src='/js/global.js')
     link(rel='stylesheet',type='text/css',href='/css/reset.css')
     link(rel='stylesheet',type='text/css',href='/css/main-stylesheet.css')
     link(rel='stylesheet',type='text/css',href='/css/shortcodes.css')
-    link(rel='stylesheet',type='text/css',href='/css/color-ligzht.css')
+    link(rel='stylesheet',type='text/css',hreff='/css/color-light.css')
     link(rel='stylesheet',type='text/css',href='http://fonts.googleapis.com/css?family=Pacifico')
     link(rel='stylesheet',type='text/css',href='http://fonts.googleapis.com/css?family=Ropa+Sans')
     link(rel='stylesheet',type='text/css',href='/css/jquery/jquery-ui-1.8.16.custom.css')
+    script(type='text/javascript',src='/js/external/jquery-1.6.2.min.js')
+    script(type='text/javascript',src='/js/external/jquery-ui-1.8.16.custom.min.js')
+    script(type='text/javascript',src='/js/global.js')
+    script(type='text/javascript',src='/js/validation.js')
     !{header}
-    script(type='text/javascript')!=js_inline
   body.top
     .main-body-wrapper
       .main-header-wrapper
@@ -74,6 +73,6 @@ html(lang="en")
                 input(name='password',placeholder='Password',type='password')
                 input(type='submit',name='login',value='Login')
             -else
-              p Welcome noob #{currentUser.displayName}!
+              p Welcome #{currentUser.name}
               p!=currentUser.avatar
               a(href='/user/logout/') Logout

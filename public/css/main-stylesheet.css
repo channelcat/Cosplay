@@ -56,7 +56,9 @@ code { margin: 0 40px 25px 40px; padding: 20px 23px; color: #cfcfcf; border: 1px
 
 /* #1 Layout structure */
 
+/* Chrome will literally crap its pants if you oncomment this
 .trans-1 { -moz-transition: all 0.2s ease 0s; -webkit-transition: all 0.2s ease 0s; -o-transition: all 0.2s ease 0s; -webkit-transform: translate3d(0,0,0); }
+*/
 
 .main-header-wrapper { height: 90px; background: url(/images/layout/header-bg-dark-1.png) 0 0 repeat-x; }
 
@@ -475,6 +477,7 @@ form textarea {
 form input[type='submit'] {
 	clear: both;
 	display: block;
+	margin: 30px 0 0 160px;
 }
 form > ul > li {
 	position: relative;
@@ -485,11 +488,13 @@ form > ul > li {
 
 .error {
 	background: #A22;
+	color: #fff;
 	border-radius: 5px;
 	padding: 3px 5px;
 }
 .success {
 	background: #2A2;
+	color: #fff;
 	border-radius: 5px;
 	padding: 3px 5px;
 }
@@ -535,9 +540,6 @@ span.loading {
 	#register form li {
 		margin-top: 10px;
 	}
-#register input[type="submit"] {
-	margin: 30px 0 0 160px;
-}
 #register #register_email_check {
 	margin: 0 0 0 10px;
 	}
@@ -545,3 +547,43 @@ span.loading {
 		position: relative;
 		top: 3px;
 	}
+
+/* Edit Profile
+ ***********************************************/
+#user_avatar {
+	width: 200px;
+	height: 75px;
+	position: relative;
+	}
+	#user_avatar > * {
+		position: absolute;
+		}
+	#user_avatar .avatar {
+		top: 0;
+		left: 0;
+		}
+	#user_avatar .avatar-status {
+		top: 5px;
+		left: 84px;
+		width: 150px;
+		font-size: 1.4em;
+		font-weight: bold;
+		line-height: 25px;
+		text-align: center;
+		}
+	#user_avatar .avatar-input {
+		top: 39px;
+		left: 84px;
+		width: 150px;
+		}
+		#user_avatar .avatar-input input[type="file"] {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			opacity: 0;
+			cursor: pointer;
+		}

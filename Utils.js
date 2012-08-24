@@ -78,7 +78,7 @@ Class = {
 };
 
 Debug = {
-	print: function(input) {
+	log: function(input) {
 		console.log( typeof(input) + ': ' + input);
 		console.log(' |-Properties:');
 		for (_key in input) {

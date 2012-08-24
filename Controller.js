@@ -133,8 +133,7 @@ var ControllerClass = {
             		this.tpl_js_inline += name.replace(/\//g, '_') + '();';
             	}
             }
-            variables.js_inline = this.tpl_js_inline;
-            variables.header = this.tpl_header;
+            variables.header = this.tpl_header + '<script type="text/javascript">' + this.tpl_js_inline + '</script>';
             
             // ------------------------------------------- //
             // Render Layout
@@ -164,6 +163,11 @@ var ControllerClass = {
 	    } catch (e) {
 	        this.renderError('Render error! ' + e.toString());
 	    }
+	},
+	
+	add_js: function(file)
+	{
+		this.tpl_header += '<script type="text/javascript" src="/js/' + file + '.js"></script>';
 	},
 	
 	output_json: function(variables) 
