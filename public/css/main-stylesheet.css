@@ -481,6 +481,7 @@ form input[type='submit'] {
 }
 form > ul > li {
 	position: relative;
+	margin-top: 10px;
 }
 
 /* Status
@@ -536,9 +537,6 @@ span.loading {
 	}
 #register form {
 	margin-top: 40px;
-	}
-	#register form li {
-		margin-top: 10px;
 	}
 #register #register_email_check {
 	margin: 0 0 0 10px;

@@ -69,9 +69,13 @@ html(lang="en")
               .sidebar-title
                 b Login
               form(method='post')
-                input(name='email',placeholder='Email Address')
-                input(name='password',placeholder='Password',type='password')
-                input(type='submit',name='login',value='Login')
+                ul
+                  li
+                    input(name='email',placeholder='Email Address')
+                  li
+                    input(name='password',placeholder='Password',type='password')
+                  li
+                    input(type='submit',name='login',value='Login')
             -else
               p Welcome #{currentUser.name}
               p!=currentUser.avatar
