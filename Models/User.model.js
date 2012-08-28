@@ -8,7 +8,8 @@
 
 var UserModel = new Schema({
     id: Number,
-    name: { type: String, index: { unique: true } },
+    name: { type: String, index: { unique: true }, set: function(val){ this.name_id = val.toLowerCase().replace(/([^A-Za-z0-9]+)/g, ''); return val; } },
+    name_id: { type: String, index: { unique: true } },
     email: { type: String, index: { unique: true } },
     staff: Boolean,
     powers: {

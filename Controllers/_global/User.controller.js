@@ -64,9 +64,11 @@ var UserController =
                         var continueFunction = this.next;
                         var postfix = '';
                         var name = params.email.match(/^(.+?)\@/)[1];
+                        this.dummyUser = new DB.User({name: name});
+                        var name_id = this.dummyUser.name_id;
 
                         var findFreeUserName = function(){
-                            DB.User.findOne({ name: name + postfix }, function(error, user){
+                            DB.User.findOne({ name_id: name_id + postfix }, function(error, user){
                                 // Name is free!
                                 if (!user) {
                                     params.name = name + postfix;
@@ -182,19 +184,41 @@ var UserController =
     save: function(params)
     {
         if (!this.checkLogin()) return;
-
-        if (params.email != undefined) { this.user.email = params.email; }
-        if (params.name != undefined) { this.user.name = params.name; }
-        if (params.password != undefined && params.password != '') { this.user.password = this._getHash(params.password); }
-        if (params.gender != undefined) { this.user.gender = params.gender; }
-        if (params.birthdayDay != undefined && params.birthdayMonth != undefined && params.birthdayYear != undefined) { this.user.birthday = new Date(params.birthdayYear, params.birthdayMonth - 1, params.birthdayDay); }
-        if (params.profile_type != undefined) { this.user.profile_type = params.profile_type; }
-        if (params.biography != undefined) { this.user.biography = params.biography; }
         
-        // Save the changes made
-        this.user.save();
-         
-        return this.output_json({ saved: 1 });
+        var result = Validations.User.profile.validate(params);
+        if (result) {
+        	chain.call(this, 
+        		function(){
+        			
+			        if (params.name === undefined) this.next();
+			        			        
+			        // If a name is set, check if its in use
+			        this.user.name = params.name;
+			        
+        			var self = this;
+	                DB.User.findOne({ name_id: this.user.name_id }, function(error, user){
+	                    // Name is free!
+	                    if (!user || user.id == self.user.id) {
+	                        self.next();
+	                    } else {
+	                        return self.error('Name is already in use. [' + (typeof user.id) + ']-[' + (typeof self.user.id) + '] ' + (user.id === self.user.id ? 'a' : 'b'));
+	                    }
+	                });
+	        	}, function() {
+			        if (params.password != undefined && params.password != '') { this.user.password = this._getHash(params.password); }
+			        if (params.gender != undefined) { this.user.gender = params.gender; }
+			        if (params.profile_type != undefined) { this.user.profile_type = params.profile_type; }
+			        if (params.biography != undefined) { this.user.biography = params.biography; }
+		        
+			        // Save the changes made
+			        this.user.save();
+		        	
+		        	return this.output_json({ saved: 1 });
+	        	}
+	        );
+        } else {
+        	return this.error(result.errors.join(' '));
+        }
     },
     
     // Edit User Profile

@@ -10,9 +10,12 @@ Config = {
 	server: {
 		address: '127.0.0.1',
 		port: 80,
-		domain: 'lostcos.com',
+		domain: 'cosbomb.com',
 		documentRoot: 'public',
-		dynamicRoot: 'dynamic'
+		dynamicRoot: 'dynamic',
+		cache: {
+			static_expire_days: 7,
+		}
 	},
 	database: {
 	    address: '127.0.0.1',

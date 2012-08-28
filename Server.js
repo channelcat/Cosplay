@@ -50,6 +50,11 @@ var Server = {
 			// Request for static/dynamic files
 		    if (self.staticFiles[request.url] || dynamic) {
 		        console.log( (dynamic ? 'dynamic' : 'static' ) + '! ' + request.url);
+                
+                // Headers
+                var expireDate = new Date();
+                expireDate.setTime((new Date()).getTime() + Config.server.cache.static_expire_days*86400);
+                
 		        // Detect content type
 		        var extension = path.extname(url);
 		        var contentType = (contentTypes[extension] != undefined) ? contentTypes[extension] : 'text/html';
@@ -62,7 +67,7 @@ var Server = {
 		        // Serve file!
 		        fs.readFile(filePath, function (err, data) {
 		        	if (!err) {
-	                    response.writeHead( 200, {'content-type': contentType} );
+	                    response.writeHead( 200, {'content-type': contentType, 'expires': expireDate.toUTCString()} );
 	                    response.end(data);
 		        	}
 		        	else {
@@ -75,6 +80,9 @@ var Server = {
 	        // Request for APP
 	        else {
                 console.log('application! ' + request.url);
+                
+                // Headers
+                // response.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
                 
 	            // Assemble the post data
                 if (request.method == 'POST') {

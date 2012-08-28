@@ -12,7 +12,7 @@ function user_edit()
         		success: function(data) {
         			$('form#user_edit input[type="submit"]').val('Saved');
         		},
-        		error: function(data) {
+        		errorz: function(data) {
         			$('form#user_edit input[type="submit"]').val('Error');
         		},
         		complete: function(data) {
