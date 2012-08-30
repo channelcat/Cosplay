@@ -83,7 +83,7 @@ var UserController =
                         findFreeUserName();
                     },
                     function(){
-                        DB.User.findOne({}, [], {sort:{id:-1}, limit:1}, this.next);
+                        DB.User.findOne().sort('-id').limit(1).exec(this.next);
                     },
                     function( error, lastUser ){
                     	var id = 1;
@@ -154,7 +154,7 @@ var UserController =
             throw new Error('Cannot find member');
         
         chain.call(this, 
-            function(){ DB.User.findOne({ name: params.id }, this.next); }, 
+            function(){ DB.User.findOne({ name_id: params.id }, this.next); }, 
             function(error, user){
                 return this.output('profile', {
                     user: user
@@ -201,7 +201,7 @@ var UserController =
 	                    if (!user || user.id == self.user.id) {
 	                        self.next();
 	                    } else {
-	                        return self.error('Name is already in use. [' + (typeof user.id) + ']-[' + (typeof self.user.id) + '] ' + (user.id === self.user.id ? 'a' : 'b'));
+	                        return self.error('Name is already in use.');
 	                    }
 	                });
 	        	}, function() {

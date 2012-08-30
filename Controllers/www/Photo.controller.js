@@ -17,6 +17,13 @@ var PhotoController =
 		return this.output('index');
 	},
     
+	manage: function(params) 
+	{
+	    this.title += 'Manage Photos';
+	    
+		return this.output('manage');
+	},
+    
 	create: function(params) 
 	{
 	    this.title += 'Submit Photo';

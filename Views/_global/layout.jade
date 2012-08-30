@@ -19,7 +19,7 @@ html(lang="en")
       .main-header-wrapper
         .main-header
           .logo
-            a.image(href='/',alt='Lost Cos')
+            a.image(href='/',alt='Cosbomb')
               img(src="/images/layout/logo.png")
             span It's not a phase dad!
           .search
@@ -31,9 +31,11 @@ html(lang="en")
               td
                 ul
                   li
-                    a(href='/') Homepage
+                    a(href='/cosplay/') Cosplays
                   li
-                    a(href='/photo/gallery/') Gallery
+                    a(href='/user/') Cosplayers
+                  li
+                    a(href='/photo/') Photos
                   li
                     a(href='/tutorial/') Tutorials
                   li
@@ -45,9 +47,11 @@ html(lang="en")
                     li!= currentUser.link
                       ul
                         li
-                          a(href='/photo/create/') Submit Picture
+                          a(href='/cosplay/manage/') Cosplays
                         li
-                          a(href='/tutorial/create/') Submit Tutorial
+                          a(href='/photo/manage/') Pictures
+                        li
+                          a(href='/tutorial/manage/') Tutorials
                         li
                           a(href='/user/edit/') Settings
                         li

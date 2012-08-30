@@ -23,7 +23,7 @@ Config = {
 	    database: 'lostcos'
 	},
 	site: {
-	    title: 'Lost Cos - ',
+	    title: 'Cosbomb - ',
 	    salt: 'H*AF(*hfz09ag3-j0gd90#%0J'
 	},
 	user: {
