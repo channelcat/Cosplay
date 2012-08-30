@@ -7,7 +7,13 @@
 // +----------------------------------------------------------------------+ 
 
 var CosplayModel = new Schema({
+    name: String,
     description: String,
+    date: {
+    	start: Date,
+    	finish: Date,
+    	update: Date
+    },
     user: { type: Schema.ObjectId, index: true }
 });
 module.exports = { collection: 'cosplays', schema: CosplayModel };

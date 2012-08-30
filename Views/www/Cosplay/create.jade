@@ -1,0 +1,13 @@
+.container
+  h2 Submit Cosplay
+  .content(id='cosplay_create')
+    form(method='post',validation='Cosplay.create',enctype='multipart/form-data')
+      ul
+        li
+          label(for='name') Name
+          input(name='name',id='name',placeholder='Name')
+        li
+          label(for='description') Description
+          textarea(name='description',id='description')
+        li
+          input(type='submit',name='create',value='Submit')

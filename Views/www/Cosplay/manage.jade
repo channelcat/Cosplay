@@ -1,0 +1,8 @@
+.container
+  h2 
+    a(href='/cosplay/create') Create Cosplay
+  h2 Manage Cosplays
+  p There are #{cosplays.length} Cosplays
+  ul
+    for cosplay in cosplays
+      li=cosplay.name

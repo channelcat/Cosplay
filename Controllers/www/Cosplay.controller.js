@@ -21,14 +21,57 @@ var CosplayController =
 	{
 	    this.title += 'Manage Cosplays';
 	    
-		return this.output('manage');
+    	return chain.call(this, 
+    		function(){
+		        DB.Cosplay.find({ user: this.user._id }).exec(this.next);
+        	}, function(err, cosplays) {
+		        if (err) 
+					return this.error('Unable to retrieve cosplays.');
+		        else 
+		        	return this.output('manage', { 
+						cosplays: cosplays
+					});
+        	}
+        );
+	},
+    
+	view: function(params) 
+	{
+	    this.title += 'Viewing a Cosplay';
+	    
+		return this.output('index');
 	},
     
 	create: function(params) 
 	{
 	    this.title += 'Submit Cosplay';
-	    	    
-		return this.output('create');
+
+	    if (params.create != undefined) {
+	        var result = Validations.Cosplay.create.validate(params);
+	        if (result) {
+	        	return chain.call(this, 
+	        		function(){
+				        var cosplay = new DB.Cosplay({ 
+                            name: params.name,
+                            user: this.user._id,
+                            description: params.description
+                        });
+                        cosplay.save(this.next);
+		        	}, function(err, cosplay) {
+				        if (err) 
+							return this.error('Unable to save cosplay.');
+				        else 
+				        	return this.redirect({ action: 'view', params: [cosplay._id] });
+		        	}
+		        );
+	        } else {
+	        	this.errors = result.errors;
+	        }
+        }
+        
+		return this.output('create', {
+            validators: [ Validations.Cosplay.create ]
+		});
 	}
 };
 

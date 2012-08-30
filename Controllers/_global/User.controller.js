@@ -18,7 +18,6 @@ var UserController =
         
         return this.output('index', {});
     },
-    
     // Register
     register: function(params) 
     {

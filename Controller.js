@@ -373,8 +373,9 @@ var ControllerClass = {
 		if (typeof location === 'object') {
 			location = '/' + this.name.substr(this.name.indexOf('/') + 1).toLowerCase() + '/' + location.action.toLowerCase() + '/' + location.params.join('/');
 		}
+		console.log('redirect! ' + location);
 		
-        this.response.writeHead( 200, { 'Location': location } );
+        this.response.writeHead( 302, { 'Location': location } );
     	this.response.end('');
     	this.response.finished = true;
 	},

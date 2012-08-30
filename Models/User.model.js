@@ -23,9 +23,14 @@ var UserModel = new Schema({
     gender: String,
     age: Number,
     birthday: Date,
+    date: { 
+    	register: Date 
+    },
     biography: String,
     has_avatar: Boolean,
     profile_type: Number,
+    
+    // Getters
     link: { type: String, get: function(){ return '<a href="/user/profile/' + this.name_id + '"><span>' + escapeHTML(this.name) + '</span></a>'; } },
     avatar: { type: String, get: function(){ return '<span class="avatar avatar-' + this.id + '"><a href="/user/profile/' + this.name_id + '"><img src="' + this.avatar_url + '" /></a></span>'; } },
     avatar_path: { type: String, get: function(){ return './dynamic/user/avatars/' + this.id + '.png'; } },
