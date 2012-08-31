@@ -14,6 +14,10 @@ var CosplayModel = new Schema({
     	finish: Date,
     	update: Date
     },
-    user: { type: Schema.ObjectId, index: true }
+    user: { type: Schema.ObjectId, index: true },
+    link: { 
+		view: { type: String, get: function(){ return '<a href="/cosplay/view/' + this._id + '"><span>' + escapeHTML(this.name) + '</span></a>'; } },
+		edit: { type: String, get: function(){ return '<a href="/cosplay/edit/' + this._id + '"><span>' + escapeHTML(this.name) + '</span></a>'; } }
+	}
 });
 module.exports = { collection: 'cosplays', schema: CosplayModel };

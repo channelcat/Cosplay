@@ -318,7 +318,7 @@ div.message-no-comments { min-height: 70px; background: url(/images/layout/ico-c
 		.post .info .comments:hover { background-position: 0 -188px; }
 
 	.post li { padding: 0 0 0 21px; margin: 6px 0 0 0; background: url(/images/layout/bullet-1.png) 0 4px no-repeat; }
-	.post ul { padding: 15px 0 32px 0; margin: 0 0 0 85px; list-style-type: none; font-size: 14px; font-weight: bold; color: #ffd497; }
+	.post ul { padding: 15px 0 32px 0; margin: 0 0 0 45px; list-style-type: none; font-size: 14px; font-weight: bold; color: #ffd497; }
 	.post ul li:first-child { margin: 0; }
 	.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 { padding: 7px 0 0 0; margin: 0 0 10px 0; font-family: Ropa Sans; color: #ffd497; font-weight: normal; }
 

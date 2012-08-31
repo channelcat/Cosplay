@@ -1,0 +1,6 @@
+.container.post
+  h2 
+    a(href='/cosplay/create') Upload Photo
+  ul
+    for photo in photos
+      li!=photo.link.view

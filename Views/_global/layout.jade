@@ -81,6 +81,7 @@ html(lang="en")
                   li
                     input(type='submit',name='login',value='Login')
             -else
-              p Welcome #{currentUser.name}
+              .sidebar-title
+                b #{currentUser.name}
               p!=currentUser.avatar
               a(href='/user/logout/') Logout

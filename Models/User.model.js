@@ -24,7 +24,7 @@ var UserModel = new Schema({
     age: Number,
     birthday: Date,
     date: { 
-    	register: Date 
+    	register: { type: Date, 'default': Date.now }
     },
     biography: String,
     has_avatar: Boolean,
