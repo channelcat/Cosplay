@@ -107,7 +107,13 @@ chain = function()
         console.log();
         // If we still have functions to run
         if (current < functions.length) {
-            functions[current++].apply(parent, arguments);
+        	try {
+            	functions[current++].apply(parent, arguments);
+        	}
+        	catch(e) {
+        		console.log('Chain error! ' + e.toString());
+        		parent.error('An unknown error occurred while processing your request.');
+        	}
         } else {
             parent.last();
         }
@@ -123,7 +129,7 @@ chain = function()
     // Restart the chain
     parent.first = function(){
         current = 0;
-        this.next.apply(this, argumests);
+        this.next.apply(this, arguments);
     };
     
     // Finish the chain

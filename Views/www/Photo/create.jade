@@ -1,13 +1,9 @@
 .container
   h2 Submit Photo
-  .content(id='photo_create')
-    form(method='post',validation='Photo.create',enctype='multipart/form-data')
+  .content
+    form(method='post',id='photo_create',action='/photo/upload',validation='Photo.create',enctype='multipart/form-data')
       ul
-        li
-          label(for='title') Title
-          input(name='title',id='title',placeholder='Title')
+        li.status Waiting
         li
           label(for='photo') Photo
           input(type='file',name='photo')
-        li
-          input(type='submit',name='create',value='Submit')

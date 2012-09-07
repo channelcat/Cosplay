@@ -233,7 +233,7 @@ var UserController =
                     image = ImageManip(params.files.avatar.path);
                     image.size(this.next);
                 } else {
-                    this.last();
+                    return this.error('Avatar file not received.');
                 }
             }, 
             function(error, size) 

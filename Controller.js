@@ -262,7 +262,7 @@ var ControllerClass = {
     	} 
     	// HTML Error
     	else {
-			this.output('../error', { error: text });
+			this.output('../../_global/error', { error: text });
     	}
     },
     

@@ -28,5 +28,21 @@ Config = {
 	},
 	user: {
 	    avatar_size: 75
+	},
+	photo: {
+		dimensions: {
+			limit: {
+				width: 1920,
+				height: 1080
+			},
+			upload: {
+				width: 5760,
+				height: 3240
+			},
+			thumbnail: {
+				width: 253,
+				height: 190
+			}
+		}
 	}
 };

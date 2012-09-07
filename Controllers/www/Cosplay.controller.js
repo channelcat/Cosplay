@@ -20,6 +20,8 @@ var CosplayController =
 	manage: function(params) 
 	{
 	    this.title += 'Manage Cosplays';
+        
+        if (!this.checkLogin()) return;
 	    
     	return chain.call(this, 
     		function(){
@@ -45,6 +47,8 @@ var CosplayController =
 	create: function(params) 
 	{
 	    this.title += 'Submit Cosplay';
+        
+        if (!this.checkLogin()) return;
 
 	    if (params.create != undefined) {
 	        var result = Validations.Cosplay.create.validate(params);

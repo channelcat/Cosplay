@@ -1,0 +1,9 @@
+-if(photo !== undefined)
+  .container.post
+    h2 
+      a!=photo.name
+    .content
+      img(src=photo.image.url)
+-else
+  .container.post
+    h2 Photo Not Found!
