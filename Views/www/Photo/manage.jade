@@ -1,6 +1,24 @@
 .container.post
-  h2 
-    a(href='/photo/create') Upload Photo
-  ul
+  h2.create 
+    a.button(href='/photo/create')
+      img(src='/images/icons/layout/up.png')
+      span Upload Photos
+.container.post
+  h2 Unpublished Photos
+  ul.manage-photos
     for photo in photos
-      li!=photo.thumbnail.link
+      li(class='photo photo-'+photo._id)
+        span.image!=photo.thumbnail.link
+        h3 Uploaded #{photo.date.create}
+        span.title Title: 
+          input(type="text",value=photo.title,placeholder="Title")
+        span.tags Tags: #{photo.tags}
+        a.button.tag
+          img(src='/images/icons/layout/html_tag.png')
+          span Tag
+        a.button.publish
+          img(src='/images/icons/layout/star.png')
+          span Publish
+        a.button.delete 
+          img(src='/images/icons/layout/cancel_circle.png')
+          span Delete

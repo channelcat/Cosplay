@@ -7,6 +7,7 @@
 // +----------------------------------------------------------------------+ 
 
 var System = require("util");
+require('date-utils');
 
 /*************************************************
  ** Built-in type extensions
@@ -49,6 +50,10 @@ Object.defineProperty(Object.prototype, "each", {
         }
     }
 });
+
+Date.prototype.toString = function(){
+    return this.toFormat('MMM D, YYYY at H:MIP');
+};
 
 /*************************************************
  ** Utility Classes

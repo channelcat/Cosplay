@@ -87,7 +87,22 @@ var Server = {
 	            // Assemble the post data
                 if (request.method == 'POST') {
                     var form = new formidable.IncomingForm();
-                    form.parse(request, function(err, fields, files) {
+                    form.parse(request, function(err, fieldsIn, files) {
+                    	// Parse arrays out of fields
+                    	var fields = {};
+                    	for ( var f in fieldsIn ) {
+                    		// Skip if this field is not object data
+                    		if (!fieldsIn.hasOwnProperty(f)) continue;
+                    		
+                    		// If this is an array
+                    		if (f.substr(f.length - 2) === '[]') {
+                    			fields[f.substr(0, f.length - 2)] = (typeof fieldsIn[f] === 'string') ? [fieldsIn[f]] : fieldsIn[f];
+                    		}
+                    		else {
+                    			fields[f] = fieldsIn[f];
+                    		}
+                    	}
+                    	
                         request.data = fields.extend({ files: files });
                         router( request, response );
                     });

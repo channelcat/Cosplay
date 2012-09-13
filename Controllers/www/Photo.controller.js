@@ -6,6 +6,7 @@
 // | Author: Michael Hill <channelcat@gmail.com>                          | 
 // +----------------------------------------------------------------------+ 
 
+var fs = require('fs');
 var PhotoController = 
 {
     name: 'www/Photo',
@@ -41,14 +42,70 @@ var PhotoController =
 	    
     	return chain.call(this, 
     		function(){
-		        DB.Photo.find({ user: this.user._id }).exec(this.next);
+		        DB.Photo.find({ user: this.user._id }).sort('-date.create').exec(this.next);
         	}, function(err, photos) {
 		        if (err) 
 					return this.error('Unable to retrieve photos.');
 		        else 
 		        	return this.output('manage', { 
+		        		js: ['photo/manage'],
 						photos: photos
 					});
+        	}
+        );
+	},
+    
+	'delete': function(params) 
+	{
+        if (!this.checkLogin()) return;
+        
+    	return chain.call(this, 
+    		function(){
+		        DB.Photo.find().where('_id').in(params.ids).exec(this.next);
+        	}, function(err, photos) {
+		        if (err) 
+					return this.error('Unable to find photos.' + err);
+				
+				// Permission checks
+		        for ( var p=0; p < photos.length; ++p ) {
+		        	var photo = photos[p];
+		        	if (String(photo.user) != String(this.user._id))
+						return this.error('You may only delete your own photos.');
+				}
+				
+				// Clean up files
+		        for ( var p=0; p < photos.length; ++p ) {
+					fs.unlink(photo.thumbnail.path);
+					fs.unlink(photo.image.path);
+		        }
+		        // Remove the photos from the DB in one batch
+		        DB.Photo.remove().where('_id').in(params.ids).exec();
+				
+		        return this.output_json({ deleted: photos.length });
+        	}
+        );
+	},
+    
+	publish: function(params) 
+	{
+        if (!this.checkLogin()) return;
+	    
+    	return chain.call(this, 
+    		function(){
+		        DB.Photo.findOne({ _id: params.id }).exec(this.next);
+        	}, function(err, photo) {
+		        if (err) 
+					return this.error('Unable to retrieve photo.');
+		        else 
+		        	if (String(photo.user) != String(this.user._id))
+						return this.error('You may only delete your own photos.');
+					
+					// Clean up files
+					fs.unlink(photo.thumbnail.path);
+					fs.unlink(photo.image.path);
+					photo.remove();
+					
+		        	return this.output_json({ deleted: 1 });
         	}
         );
 	},
@@ -71,6 +128,7 @@ var PhotoController =
 	    
         var image, photo, size;
         chain.call(this, 
+        	// Init image and get size
             function() 
             {
                 if (params.files.photo && params.files.photo.size) {
@@ -80,6 +138,7 @@ var PhotoController =
                     return this.error('Photo not received.');
                 }
             }, 
+            // Create photo DB record
             function(error, _size) 
             {
                 if (error) return this.error('Unable to process photo.  The file is not a valid image. ' + error);
@@ -100,6 +159,7 @@ var PhotoController =
                 // Grab the image type for the file extension
                 image.format(this.next);
             },
+            // Write Large Image
             function(error, format) 
             {
                 if (error) return this.error('Unable to determine photo type.  ' + error);
@@ -113,12 +173,14 @@ var PhotoController =
             		
                 image.write(photo.image.path, this.next);
             }, 
+            // Get large image size
             function(error) 
             {
                 if (error) return this.error('Unable to save Full size image.' + error);
                 
                 image.size(this.next);
             },
+            // Save thumbnail
             function(error, size) 
             {
                 if (error) return this.error('Unable to process full photo size.  ' + error);
@@ -130,6 +192,7 @@ var PhotoController =
                 
                 image.write(photo.thumbnail.path, this.next);
             },
+            // Save photo and output json
             function(error, size) 
             {
                 if (error) return this.error('Unable to save thumbnail.  ' + error);

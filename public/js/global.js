@@ -76,3 +76,11 @@ $(document).ready(function(){
 		type: 'POST'
 	});
 });
+
+$.fn.idFromClass = function(className){
+	if (className === undefined) return false;
+	
+	var results = $(this).attr('class').match(new RegExp(className + '-([a-fA-F0-9]+)'));
+	
+	return results ? results[1] : false;
+};
