@@ -7,7 +7,6 @@
 // +----------------------------------------------------------------------+ 
 
 var PhotoModel = new Schema({
-    title: { type: String },
     name: { type: String, get: function(){ return (this.title !== undefined) ? this.title : this.date.create } },
     description: { type: String },
     date: {

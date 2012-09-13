@@ -460,12 +460,19 @@ div.message-no-comments { min-height: 70px; background: url(/images/layout/ico-c
 
 /* Forms
  ***********************************************/
+input[type="text"], input[type="password"], textarea, select {
+	padding: 3px;
+	border-radius: 5px;
+	border: 0;
+	margin: 0;
+}
 form label {
 	display: inline-block;
 	width: 125px;
 	text-align: right;
 	margin-right: 5px;
 	vertical-align: top;
+	line-height: 22px;
 }
 form input, form select {
 	display: inline-block;
