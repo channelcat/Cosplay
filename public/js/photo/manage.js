@@ -1,7 +1,7 @@
 function photo_manage()
 {
     $(document).ready(function(){
-    	$('.manage-photos .delete').click(function(e){
+    	$('.photo-manage .delete').click(function(e){
     		e.preventDefault();
     		
     		var self = this;

@@ -5,7 +5,7 @@
       span Upload Photos
 .container.post
   h2 Unpublished Photos
-  ul.manage-photos
+  ul.photo-manage
     for photo in photos
       li(class='photo photo-'+photo._id)
         span.image!=photo.thumbnail.link
